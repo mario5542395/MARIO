@@ -1,0 +1,616 @@
+
+.section {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0;
+}
+
+.section.wb {
+    background-color: #ffffff;
+}
+
+.hover-btn-new{
+	color: #ffffff;
+	display: inline-block;
+	font-weight: 400;
+	line-height: 46px;
+	padding: 0 17px;
+	text-transform: uppercase;
+	position: relative;
+	border: 2px solid #fff;
+	font-size: 14px;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+	border-radius: 2px;
+}
+
+.orange{
+	border-color: #ffffff;
+}
+
+
+.section-title {
+    display: block;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.section-title p {
+    color: #999;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 33px;
+    margin: 0;
+}
+
+.section-title h3 {
+    font-size: 42px;
+    font-weight: 500;
+    line-height: 62px;
+    margin: 0 0 25px;
+    padding: 0;
+    text-transform: none;
+}
+
+.section.colorsection p,
+.section.colorsection h3,
+.section.db h3 {
+    color: #ffffff;
+}
+
+.message-box a{
+	position: relative;
+	font-size: 18px;
+	display: inline-block;
+}
+.message-box a,
+.message-box a.hover-btn-new::after {
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.message-box a.hover-btn-new::before,
+.message-box a.hover-btn-new::after {
+	background: rgba(22,34,57,0.95);
+	content: '';
+	position: absolute;
+	z-index: 1;
+}
+
+.message-box a.hover-btn-new:hover span {
+  color: #ffffff;
+}
+.message-box a.hover-btn-new::before {
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.message-box a.hover-btn-new::after {
+  background: #00b1fd !important;
+  height: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+.message-box a.hover-btn-new span{
+	position: relative;
+	z-index: 2;
+	color: #fff;
+}
+.message-box a.hover-btn-new:hover:after {
+  height: 0;
+  left: 50%;
+  top: 50%;
+  width: 0;
+}
+.section.wb img{
+    border-radius: 20%;
+}
+.about-img {
+    opacity: 0;
+    transform: translateY(50px); /* الصورة تبدأ من الأسفل */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.about-img.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.section.cl {
+	background-color: #2d3032;
+}
+body.host_version .stat-wrap .alignleft {
+    margin-right: 30px;
+}
+.breadcrumb_bg {
+    background-image: url("/088f93c18f3ec69b520ff4fd864ad33e.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  /* line 5, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  
+  /* line 10, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    content: "";
+    opacity: 0.8;
+    z-index: -1;
+  }
+  
+  /* line 22, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb .breadcrumb_iner {
+    height: 450px;
+    width: 100%;
+    display: table;
+  }
+  
+  /* line 27, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb .breadcrumb_iner .breadcrumb_iner_item {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  /* line 31, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  
+  @media (max-width: 576px) {
+    /* line 31, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+    .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
+      font-size: 35px;
+    }
+  }
+  
+  @media only screen and (min-width: 576px) and (max-width: 767px) {
+    /* line 31, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+    .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
+      font-size: 35px;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* line 31, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+    .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
+      font-size: 40px;
+    }
+  }
+  
+  /* line 53, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb .breadcrumb_iner .breadcrumb_iner_item p {
+    font-size: 15px;
+    color: #fff;
+  }
+  
+  /* line 58, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb .breadcrumb_iner .breadcrumb_iner_item span {
+    margin: 0px 5px;
+    font-size: 12px;
+  }
+  
+  /* line 68, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb {
+    margin-bottom: 0px !important;
+  }
+  .learning_part .learning_member_text h5 {
+    font-family: "Roboto", sans-serif;
+    color: #556172;
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    padding-left: 75px;
+    text-transform: uppercase;
+  }
+  
+  /* line 90, E:/172 Etrain Education/172_Etrain_Education_html/sass/_learning.scss */
+  .learning_part .learning_member_text h5:after {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    height: 2px;
+    width: 60px;
+    content: "";
+    background-color: #ff663b;
+  }
+  
+  /* line 101, E:/172 Etrain Education/172_Etrain_Education_html/sass/_learning.scss */
+  .learning_part .learning_member_text h2 {
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 38px;
+    position: relative;
+    margin-top: 19px;
+  }
+  .learning_part .learning_member_text p {
+    line-height: 1.929;
+    margin-bottom: 7px;
+  }
+  .learning_part .learning_member_text ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 30px;
+  }
+  .learning_part .learning_member_text ul li {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-size: 14px;
+    padding-left: 33px;
+    padding-top: 12px;
+    color: #556172;
+  }
+  .learning_part .learning_member_text ul li span {
+    margin-right: 17px;
+    font-size: 16px;
+    position: absolute;
+    left: 15px;
+    padding-top: 2px;
+  }
+  .learning_part .learning_member_text .btn_1 {
+    margin-top: 6px;
+  }
+  .btn_1 {
+    display: inline-block;
+    padding: 13.5px 45px;
+    border-radius: 50px;
+    font-size: 14px;
+    color: #fff;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    text-transform: capitalize;
+    background-size: 200% auto;
+    border: 1px solid transparent;
+    box-shadow: 0px 12px 20px 0px rgba(255, 126, 95, 0.15);
+  }
+  
+  /* line 38, E:/172 Etrain Education/172_Etrain_Education_html/sass/_button.scss */
+  .btn_1:hover {
+    color: #fff !important;
+    background-position: right center;
+    box-shadow: 0px 10px 30px 0px rgba(193, 34, 10, 0.2);
+  }
+  .btn_1, .btn_2:hover, .main_menu .navbar-toggler:after, .banner_part .banner_text .btn_1, .feature_part .single_feature:hover span {
+    background-image: linear-gradient(to left, #ee390f 0%, #f9b700 51%, #ee390f 100%);
+  }
+  a {
+    text-decoration: none;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  
+  /* line 66, E:/172 Etrain Education/172_Etrain_Education_html/sass/_common.scss */
+  a:hover {
+    outline: none;
+    text-decoration: none;
+  }
+  /*** About ***/
+.member_counter {
+  height: 300px;
+  background-image: -moz-linear-gradient(0deg, #ee390f 0%, #f9b700 100%);
+  background-image: -webkit-linear-gradient(0deg, #ee390f 0%, #f9b700 100%);
+  background-image: -ms-linear-gradient(0deg, #ee390f 0%, #f9b700 100%);
+}
+.member_counter {
+  padding: 73px 0px 73px;
+}
+.member_counter .single_member_counter {
+  text-align: center;
+}
+.member_counter .single_member_counter span {
+  font-size: 60px;
+  font-weight: 700;
+  color: #fff;
+  font-style: "Poppins", sans-serif;
+}
+.member_counter .single_member_counter h4 {
+  color: #fff;
+  font-size: 24px;
+  font-size: 600;
+  margin-top: 28px;
+  text-transform: capitalize;
+  position: relative;
+}
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2em;
+}
+.member_counter .single_member_counter h4:after {
+  position: absolute;
+  left: 0;
+  top: -20px;
+  right: 0;
+  margin: 0 auto;
+  width: 60px;
+  height: 1px;
+  background-color: #fff;
+  content: "";
+}
+.section_tittle p {
+  margin-top: 20px;
+  color: #556172;
+  font-weight: 500;
+  text-transform: uppercase;
+  line-height: 11px;
+  margin-bottom: 26px;
+}
+.section_tittle h2 {
+  font-size: 42px;
+  color: #0c2e60;
+  line-height: 37px;
+  font-weight: 700;
+  position: relative;
+  position: relative;
+}
+.section_tittle h2:after {
+  position: absolute;
+  content: "";
+  bottom: -30px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  width: 80px;
+  height: 2px;
+  background-color: #ff663b;
+}
+.testimonial_part {
+  overflow: hidden;
+}
+/* line 4, E:/172 Etrain Education/172_Etrain_Education_html/sass/_testimonial_part.scss */
+.testimonial_part .section_tittle {
+  margin-bottom: 80px;
+}
+.testimonial_part .textimonial_iner {
+  margin-left: 13%;
+  overflow: hidden;
+}
+.testimonial_part .testimonial_slider {
+  margin: 30px;
+}
+.testimonial_part .testimonial_slider_text {
+  padding: 50px;
+  background-color: #fff;
+  box-shadow: 0px 10px 30px 0px rgba(12, 46, 96, 0.1);
+  position: relative;
+  z-index: 1;
+}
+.testimonial_part .testimonial_slider_text:after {
+  position: absolute;
+  right: 16%;
+  top: 59px;
+  width: 148px;
+  height: 124px;
+  background-image: url(../img/quote.png);
+  content: "";
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+.testimonial_part .owl-dots {
+  text-align: center;
+  padding-top: 67px;
+  margin-left: -26%;
+  line-height: 0px;
+}
+.testimonial_part .owl-dots button.owl-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #d7d7d7;
+  margin: 0 10px;
+}
+.testimonial_part .owl-dots button.owl-dot.active {
+  background-color: #ff663b;
+  width: 17px;
+  border-radius: 50px;
+}
+
+/* line 137, E:/172 Etrain Education/172_Etrain_Education_html/sass/_testimonial_part.scss */
+.testimonial_part .owl-dots button.owl-dot:focus {
+  outline: none;
+}
+.testimonial_part .testimonial_slider p {
+  font-size: 15px;
+  font-style: italic;
+}
+
+/* line 157, E:/172 Etrain Education/172_Etrain_Education_html/sass/_testimonial_part.scss */
+.testimonial_part h4 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+/* line 163, E:/172 Etrain Education/172_Etrain_Education_html/sass/_testimonial_part.scss */
+.testimonial_part h5 {
+  font-size: 14px;
+  font-family: "Roboto", sans-serif;
+  color: #888888;
+}
+/* تحسين تصميم الفوتر */
+.footer {
+  margin-top:30px ;
+  padding: 50px 0 30px;
+  background: #0b051b;
+  color: #ffffff;
+  text-align: left;
+  border-top: 1px solid #ddd;
+}
+
+/* ✅ ضبط العناوين */
+.footer .widget-title h3 {
+  color: #FF6700;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+/* ✅ ضبط الروابط */
+.footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer .footer-links a {
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer .footer-links a:hover {
+  color: #FF6700;
+}
+
+/* ✅ ضبط الأيقونات */
+.footer-links-soi {
+  margin: 15px 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-links-soi li {
+  display: inline-block;
+  margin: 5px;
+}
+
+.footer-links-soi li a {
+  background: #ff820e;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.footer-links-soi li a:hover {
+  background: #ffe100;
+  transform: scale(1.1);
+}
+
+/* ✅ تحسين حقوق النشر */
+.copyrights {
+  border-top: 1px solid #ddd;
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ✅ تحسين التناسق على الهواتف */
+@media (max-width: 768px) {
+  .footer {
+      text-align: center;
+  }
+
+  .footer .widget {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  .footer-links-soi {
+      justify-content: center;
+  }
+}
+.footer p{
+  color: #ffffff;
+  font-size: medium;
+}
+        /* Login Modal Styles - Add this to your existing CSS */
+        .login-modal {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0,0,0,0.5);
+          z-index: 1000;
+          justify-content: center;
+          align-items: center;
+      }
+      
+      .login-box {
+          background-color: white;
+          padding: 30px;
+          border-radius: 8px;
+          width: 550px;
+          height: 350px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+          text-align: center;
+      }
+      
+      .login-box h3 {
+          color: #1a237e; /* Navy blue to match header */
+          margin-bottom: 20px;
+      }
+      
+      .login-input {
+          width: 100%;
+          padding: 12px;
+          margin-bottom: 15px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+      
+      .login-btn {
+          background-color: #1a237e; /* Navy blue */
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          width: 100%;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: background-color 0.3s;
+      }
+      
+      .login-btn:hover {
+          background-color: #303f9f; /* Darker blue */
+      }
+      
+      .close-btn {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+          color: #777;
+          font-size: 20px;
+      }

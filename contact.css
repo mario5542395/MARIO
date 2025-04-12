@@ -1,0 +1,329 @@
+
+.breadcrumb_bg {
+    background-image: url("/088f93c18f3ec69b520ff4fd864ad33e.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  /* line 5, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  
+  /* line 10, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb:after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    content: "";
+    opacity: 0.8;
+    z-index: -1;
+  }
+  
+  /* line 22, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb .breadcrumb_iner {
+    height: 450px;
+    width: 100%;
+    display: table;
+  }
+  
+  /* line 27, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb .breadcrumb_iner .breadcrumb_iner_item {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  /* line 31, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  
+  @media (max-width: 576px) {
+    /* line 31, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+    .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
+      font-size: 35px;
+    }
+  }
+  
+  @media only screen and (min-width: 576px) and (max-width: 767px) {
+    /* line 31, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+    .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
+      font-size: 35px;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    /* line 31, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+    .breadcrumb .breadcrumb_iner .breadcrumb_iner_item h2 {
+      font-size: 40px;
+    }
+  }
+  
+  /* line 53, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb .breadcrumb_iner .breadcrumb_iner_item p {
+    font-size: 15px;
+    color: #fff;
+  }
+  
+  /* line 58, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb .breadcrumb_iner .breadcrumb_iner_item span {
+    margin: 0px 5px;
+    font-size: 12px;
+  }
+  
+  /* line 68, E:/172 Etrain Education/172_Etrain_Education_html/sass/_breadcrumb.scss */
+  .breadcrumb {
+    margin-bottom: 0px !important;
+  }
+  .section-title {
+    margin-top: 100px;
+    display: block;
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.section-title p {
+    color: #999;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 33px;
+    margin: 0;
+}
+
+.section-title h3 {
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 62px;
+    margin: 0 0 25px;
+    padding: 0;
+    text-transform: none;
+}
+
+.contact_form {
+    border: none;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1);
+    background-color: #333333;
+    padding: 40px 30px;
+    height: 600px;
+    width: 100%;
+    margin-bottom:100px ;
+}
+
+.contact_form .form-control {
+    background-color: #fff;
+    margin-bottom: 30px;
+    border: 1px solid #ebebeb;
+    box-sizing: border-box;
+    color: #bcbcbc;
+    font-size: 16px;
+    outline: 0 none;
+    padding: 10px 25px;
+    height: 80px;
+    resize: none;
+    box-shadow: none !important;
+    width: 100%;
+}
+
+.contact_form textarea {
+    color: #bcbcbc;
+    padding: 20px 25px !important;
+    height: 160px !important;
+}
+
+#contact {
+    background: url(images/bg.png) no-repeat center center #fff;
+}
+
+.map-container {
+    padding-left: 15px;
+    height: 600px;
+}
+
+.map-box {
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, 0.1);
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    min-height: 500px;
+}
+
+@media (max-width: 768px) {
+    .map-container {
+        padding-left: 0;
+        margin-top: 30px;
+    }
+}
+.footer {
+  padding: 50px 0 30px;
+  background: #ffffff;
+  color: #000000;
+  text-align: left;
+  border-top: 3px solid #c9c5c5;
+}
+
+/* ✅ ضبط العناوين */
+.footer .widget-title h3 {
+  color: #FF6700;
+  font-weight: 700;
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+/* ✅ ضبط الروابط */
+.footer .footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-links li {
+  margin-bottom: 10px;
+}
+
+.footer .footer-links a {
+  color: #333;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer .footer-links a:hover {
+  color: #FF6700;
+}
+
+/* ✅ ضبط الأيقونات */
+.footer-links-soi {
+  margin: 15px 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-links-soi li {
+  display: inline-block;
+  margin: 5px;
+}
+
+.footer-links-soi li a {
+  background: #000000;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.footer-links-soi li a:hover {
+  background: #FF6700;
+  transform: scale(1.1);
+}
+
+/* ✅ تحسين حقوق النشر */
+.copyrights {
+  border-top: 1px solid #ddd;
+  background-color: #f8f8f8;
+  text-align: center;
+  padding: 12px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ✅ تحسين التناسق على الهواتف */
+@media (max-width: 768px) {
+  .footer {
+      text-align: center;
+  }
+
+  .footer .widget {
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  .footer-links-soi {
+      justify-content: center;
+  }
+}
+.footer p{
+  color: #000;
+  font-size: medium;
+}
+        /* Login Modal Styles - Add this to your existing CSS */
+        .login-modal {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0,0,0,0.5);
+          z-index: 1000;
+          justify-content: center;
+          align-items: center;
+      }
+      
+      .login-box {
+          background-color: white;
+          padding: 30px;
+          border-radius: 8px;
+          width: 550px;
+          height: 350px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+          text-align: center;
+      }
+      
+      .login-box h3 {
+          color: #1a237e; /* Navy blue to match header */
+          margin-bottom: 20px;
+      }
+      
+      .login-input {
+          width: 100%;
+          padding: 12px;
+          margin-bottom: 15px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+      
+      .login-btn {
+          background-color: #1a237e; /* Navy blue */
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          width: 100%;
+          border-radius: 4px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: background-color 0.3s;
+      }
+      
+      .login-btn:hover {
+          background-color: #303f9f; /* Darker blue */
+      }
+      
+      .close-btn {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          cursor: pointer;
+          color: #777;
+          font-size: 20px;
+      }

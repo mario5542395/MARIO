@@ -1,0 +1,458 @@
+.carousel-fullscreen {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-fullscreen .carousel-inner {
+    height: 100%;
+}
+
+.carousel-fullscreen .carousel-item {
+    height: 100%;
+}
+
+.carousel-fullscreen .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* سيغطي الصورة كامل المساحة مع الحفاظ على النسب */
+}
+
+.carousel-fullscreen .carousel-caption {
+    bottom: 20%;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 20px;
+    border-radius: 5px;
+}
+/* التصميم العام للقسم */
+.special-section {
+    background-image: #ffffff9e;
+    height: 100vh; /* ارتفاع يساوي ارتفاع الشاشة */
+    width: 100vw; /* عرض يساوي عرض الشاشة */
+    padding: 0; /* إزالة الحشوة الداخلية */
+    margin: 0; /* إزالة الهوامش */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* تنسيق المحتوى الرئيسي */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row-reverse; /* لعكس المواقع ليصبح النص على اليسار */
+    align-items: center;
+    gap: 3rem;
+}
+
+/* تنسيق قسم النص */
+.text-content {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+/* تنسيق العنوان الرئيسي */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #1a1a1a;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    margin-top: 1rem;
+}
+
+/* تنسيق الفقرات */
+.section-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 1.5rem;
+}
+
+/* تنسيق قسم الصور */
+.images-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    position: relative;
+}
+
+.images-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.images-grid img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* تأثير خاص للصورة الثانية */
+.images-grid img:nth-child(2) {
+    margin-top: 2rem;
+    position: relative;
+    z-index: 1;
+}
+/* للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .section-container {
+        flex-direction: column;
+    }
+    
+    .text-content {
+        padding-right: 0;
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .images-grid::before {
+        display: none;
+    }
+}
+/* إعدادات الأنيميشن الأولية */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+/* حالة الأنيميشن عند الظهور */
+.scroll-animate.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* تأخير متدرج للصور */
+.images-grid img:nth-child(1) {
+    transition-delay: 0.30s;
+}
+.images-grid img:nth-child(2) {
+    transition-delay: 0.5s;
+}
+
+/* تأثيرات عند الـ hover */
+.scroll-animate.animate:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+/* التنسيق العام */
+.content-section {
+    background-color: rgba(22,34,57,0.95);
+    height: 100vh; /* ارتفاع يساوي ارتفاع الشاشة */
+    width: 100vw; /* عرض يساوي عرض الشاشة */
+    padding: 0; /* إزالة الحشوة الداخلية */
+    margin: 0; /* إزالة الهوامش */
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row; /* الصور أولاً (يسار) */
+    align-items: center;
+    gap: 3rem;
+}
+
+.text-block {
+    flex: 1;
+    padding-right: 2rem; /* حشوة لليمين */
+    text-align: right; /* محاذاة النص لليمين */
+}
+
+.content-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.content-title::after {
+    content: '';
+    display: block;
+    width: 90px;
+    height: 5px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    margin-top: 1rem;
+    margin-left: auto; /* الخط يبدأ من اليمين */
+}
+
+.content-paragraph {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+}
+
+.media-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    position: relative;
+}
+
+/* أنيميشن الصور */
+.media-animate {
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.media-animate.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.media-grid img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.media-grid img:nth-child(1) {
+    transition-delay: 0.15s;
+}
+
+.media-grid img:nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.media-grid img.active:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .content-wrapper {
+        flex-direction: column; /* الصور أولاً في الموبايل */
+    }
+    
+    .text-block {
+        padding-right: 0;
+        margin-top: 2rem;
+        text-align: center; /* محاذاة مركزية في الموبايل */
+    }
+    
+    .content-title {
+        font-size: 2rem;
+    }
+    
+    .content-title::after {
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+.carousel-fullscreen {
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.carousel-item {
+    transition: transform 1.2s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.carousel-item img {
+    object-fit: cover;
+    height: 100vh;
+    width: 100vw;
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    bottom: 10%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+.footer {
+    padding: 50px 0 30px;
+    background: #ffffff;
+    color: #000000;
+    text-align: left;
+    border-top: 1px solid #ddd;
+}
+
+/* ✅ ضبط العناوين */
+.footer .widget-title h3 {
+    color: #FF6700;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+/* ✅ ضبط الروابط */
+.footer .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer .footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer .footer-links a {
+    color: #333;
+    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer .footer-links a:hover {
+    color: #FF6700;
+}
+
+/* ✅ ضبط الأيقونات */
+.footer-links-soi {
+    margin: 15px 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-links-soi li {
+    display: inline-block;
+    margin: 5px;
+}
+
+.footer-links-soi li a {
+    background: #000000;
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    border-radius: 50%;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.footer-links-soi li a:hover {
+    background: #FF6700;
+    transform: scale(1.1);
+}
+
+/* ✅ تحسين حقوق النشر */
+.copyrights {
+    border-top: 1px solid #ddd;
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+/* ✅ تحسين التناسق على الهواتف */
+@media (max-width: 768px) {
+    .footer {
+        text-align: center;
+    }
+
+    .footer .widget {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .footer-links-soi {
+        justify-content: center;
+    }
+}
+.footer p{
+    color: #000;
+    font-size: medium;
+}
+        /* Login Modal Styles - Add this to your existing CSS */
+        .login-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 550px;
+            height: 350px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        
+        .login-box h3 {
+            color: #1a237e; /* Navy blue to match header */
+            margin-bottom: 20px;
+        }
+        
+        .login-input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .login-btn {
+            background-color: #1a237e; /* Navy blue */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #303f9f; /* Darker blue */
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #777;
+            font-size: 20px;
+        }
