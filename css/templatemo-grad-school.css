@@ -166,7 +166,7 @@ a.menu-link { display: none; }
 
 .main-header {
     background-color: rgba(22,34,57,0.95);
-    height: 80px;
+    height: 70px;
     position: fixed;
     z-index: 12;
     width: 100%;
@@ -180,7 +180,7 @@ a.menu-link { display: none; }
 }
 
 .main-header .logo a {
-    font-size: 20px;
+    font-size: 25px;
     text-transform: uppercase;
     font-weight: 800;
     color: #fff;
