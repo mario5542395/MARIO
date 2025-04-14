@@ -166,7 +166,7 @@ a.menu-link { display: none; }
 
 .main-header {
     background-color: rgba(22,34,57,0.95);
-    height: 60px;
+    height: 65px;
     position: fixed;
     z-index: 12;
     width: 100%;
