@@ -1,22 +1,44 @@
+/* قواعد أساسية للاستجابة */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* منع التكبير على الهواتف */
+@media screen and (max-width: 480px) {
+    * {
+        max-width: 100% !important;
+    }
+    
+    body {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+}
 .carousel {
     position: relative;
     z-index: 0;
+    overflow: hidden;
 }
 
 .carousel-inner {
     display: flex;
     align-items: center;
 }
-
+.carousel-item {
+    min-width: 100%;
+    transition: opacity 0.5s ease;
+}
 .carousel-item {
     transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; 
 }
 
 .carousel img {
-    width:100%;
-    height:985px;
-    object-fit: cover; 
-    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 100vh; /* حد أقصى للارتفاع */
+    object-fit: cover;
 }
 .carousel-control-prev, 
 .carousel-control-next {
@@ -26,7 +48,11 @@
     box-shadow: none;
     border: none;
 }
-
+@media (max-width: 768px) {
+    .carousel img {
+        max-height: 60vh;
+    }
+}
 
 .section {
     display: block;
@@ -172,6 +198,10 @@ body.host_version .stat-wrap .alignleft {
 
 
 /*** Team ***/
+.team-item {
+    position: relative;
+    margin-bottom: 30px;
+}
 .team-item .team-text {
     position: absolute;
     width: 250px;
@@ -187,9 +217,12 @@ body.host_version .stat-wrap .alignleft {
     border-radius: 250px;
     transition: .5s;
 }
-.team-item img{
-    height: 600px;
-    border: 2px solid #000;
+.team-item img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .team-item:hover .team-text {
@@ -698,7 +731,13 @@ h1, h2, h3, h4, h5, h6 {
     gap: 60px;
     padding: 0 40px;
   }
-  
+  .testimonial-card {
+    height: auto;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: 20px;
+}
   .testimonial-card {
     background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
     height: 500px;
@@ -717,7 +756,11 @@ h1, h2, h3, h4, h5, h6 {
     transform: scale(1.1) rotate(0deg);
     box-shadow: 0 20px 45px rgba(255, 106, 0, 0.3);
   }
-  
+  .testimonial-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
   .testimonial-image {
     width: 100%;
     height: 200px;
