@@ -1,21 +1,4 @@
-/* قواعد أساسية للاستجابة */
-img, video {
-    max-width: 100%;
-    height: auto;
-}
 
-/* منع التكبير على الهواتف */
-@media screen and (max-width: 480px) {
-    * {
-        max-width: 100% !important;
-    }
-    
-    body {
-        -webkit-text-size-adjust: 100%;
-        -ms-text-size-adjust: 100%;
-        text-size-adjust: 100%;
-    }
-}
 .carousel {
     position: relative;
     z-index: 0;
