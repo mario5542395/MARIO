@@ -456,8 +456,8 @@ h1, h2, h3, h4, h5, h6 {
 .footer {
   margin-top:30px ;
   padding: 50px 0 30px;
-  background: #0b051b;
-  color: #ffffff;
+  background: #ffffff;
+  color: #010101;
   text-align: left;
   border-top: 1px solid #ddd;
 }
@@ -482,7 +482,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer .footer-links a {
-  color: #ffffff;
+  color: #000000;
   font-size: 16px;
   text-decoration: none;
   transition: color 0.3s;
@@ -506,7 +506,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-links-soi li a {
-  background: #ff820e;
+  background: #000000;
   color: #ffffff;
   width: 40px;
   height: 40px;
@@ -526,11 +526,11 @@ h1, h2, h3, h4, h5, h6 {
 /* ✅ تحسين حقوق النشر */
 .copyrights {
   border-top: 1px solid #ddd;
-  background-color: #f8f8f8;
+  background-color: #000000;
   text-align: center;
   padding: 12px 0;
   font-size: 14px;
-  color: #555;
+  color: #000000;
 }
 
 /* ✅ تحسين التناسق على الهواتف */
@@ -549,7 +549,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 .footer p{
-  color: #ffffff;
+  color: #000000;
   font-size: medium;
 }
         /* Login Modal Styles - Add this to your existing CSS */
