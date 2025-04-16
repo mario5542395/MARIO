@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // بدء الدوران كل 3 ثواني
-        setInterval(rotateCarousel, 3000);
+        setInterval(rotateCarousel, 5000);
         
         // يمكنك إضافة تفاعل النقاط إذا أردت
         const dots = carousel.querySelectorAll('.owl-dot');

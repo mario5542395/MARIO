@@ -1,6 +1,8 @@
-
+*{
+  z-index: 1;
+}
 .breadcrumb_bg {
-    background-image: url("../image/088f93c18f3ec69b520ff4fd864ad33e.jpg");
+    background-image: url("../image/contact_LE_upscale_balanced_x4.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -167,12 +169,34 @@
         margin-top: 30px;
     }
 }
+      /* Particles.js Container Styles */
+      #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent; /* جعلها شفافة */
+        z-index: 0; /* تأكد من أنها في الخلف */
+        pointer-events: none; /* تسمح بالتفاعل مع العناصر تحتها */
+      }
+
+/* تعديلات لضمان ظهور العناصر فوق الجسيمات */
+.booking-container {
+  position: relative;
+  z-index: 1;
+  background-color: rgb(255, 255, 255); /* خلفية شبه شفافة */
+}
+
 .footer {
   padding: 50px 0 30px;
   background: #ffffff;
   color: #000000;
   text-align: left;
   border-top: 3px solid #c9c5c5;
+  z-index: 1001;
+  position: absolute;
+  width: 100%;
 }
 
 /* ✅ ضبط العناوين */

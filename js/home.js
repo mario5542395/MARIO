@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 entry.target.classList.add("show");
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.6 });
 
     images.forEach(image => observer.observe(image));
 });

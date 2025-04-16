@@ -1,40 +1,31 @@
 
-.carousel {
-    position: relative;
-    z-index: 0;
+.carousel-fullscreen {
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
-.carousel-inner {
-    display: flex;
-    align-items: center;
-}
-.carousel-item {
-    min-width: 100%;
-    transition: opacity 0.5s ease;
-}
-.carousel-item {
-    transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out; 
+.carousel-fullscreen .carousel-inner {
+    height: 100%;
 }
 
-.carousel img {
+.carousel-fullscreen .carousel-item {
+    height: 100%;
+}
+
+.carousel-fullscreen .carousel-item img {
     width: 100%;
-    height: auto;
-    max-height: 100vh; /* حد أقصى للارتفاع */
-    object-fit: cover;
+    height: 100%;
+    object-fit: cover; /* سيغطي الصورة كامل المساحة مع الحفاظ على النسب */
 }
-.carousel-control-prev, 
-.carousel-control-next {
-    background: none !important;
-    opacity: 1 !important; 
-    width: 5% !important;
-    box-shadow: none;
-    border: none;
-}
-@media (max-width: 768px) {
-    .carousel img {
-        max-height: 60vh;
-    }
+
+.carousel-fullscreen .carousel-caption {
+    bottom: 10%;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 5px;
+    position: absolute;
+    text-align: left;
 }
 
 .section {
@@ -746,7 +737,7 @@ h1, h2, h3, h4, h5, h6 {
 }
   .testimonial-image {
     width: 100%;
-    height: 200px;
+    height: 250px;
     object-fit: cover;
     filter: brightness(0.85) blur(1px);
     border-bottom: 2px solid #ff6a00;

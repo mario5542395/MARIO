@@ -129,7 +129,7 @@ body.host_version .stat-wrap .alignleft {
     margin-right: 30px;
 }
 .breadcrumb_bg {
-    background-image: url("../image/088f93c18f3ec69b520ff4fd864ad33e.jpg");
+    background-image: url("../image/about\ us\ _LE_upscale_balanced_x4.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -383,9 +383,16 @@ h1, h2, h3, h4, h5, h6 {
 .testimonial_part .section_tittle {
   margin-bottom: 80px;
 }
+
 .testimonial_part .textimonial_iner {
-  margin-left: 13%;
+  margin-left: 8%;
   overflow: hidden;
+}
+.testimonial_part .owl-dots {
+  text-align: center; /* محاذاة النقاط في المنتصف */
+  margin-top: 30px; /* المسافة من الأعلى */
+  margin-left: 0; /* إزالة الـ margin-left الأصلي */
+  padding-top: 20px; /* تعديل الـ padding */
 }
 .testimonial_part .testimonial_slider {
   margin: 30px;
