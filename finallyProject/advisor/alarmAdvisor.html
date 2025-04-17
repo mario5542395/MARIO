@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AlarmAdvisor</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(to right, #9ed2df, #77c7da); /* تدرج اللون الأزرق */
+      font-family: Arial, sans-serif;
+    }
+
+    .main-container {
+      display: flex;
+      width: 600px;
+      height: 400px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+    }
+
+    .left-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-right: 15px;
+      align-items: center;
+    }
+
+    .textbox-small {
+      width: 120px;
+      height: 35px;
+      margin-bottom: 15px;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .send-btn {
+      width: 120px;
+      height: 35px;
+      background-color: #2193b0;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .send-btn:hover {
+      background-color: #197c97;
+    }
+
+    .textbox-large {
+      width: 100%;
+      height: 100%;
+      padding: 15px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    /* Sidebar styles */
+    .toggle-btn {
+  position: fixed;
+  top: 10px;
+  left: 260px; /* تم تغييرها من 270 إلى 260 لتحريك الزر للداخل */
+  background-color: #2193b0;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  z-index: 100;
+  transition: left 0.3s ease;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #beddf0;
+  border: 1px solid #2193b0;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 99;
+  transition: transform 0.3s ease;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
+}
+
+.sidebar img {
+  width: 100%;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #021317;
+  font-weight: bold;
+  display: block;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #96cfe5;
+  text-decoration: underline;
+  transform: scale(1.05);
+}
+
+    @media (max-width: 768px) {
+      .main-container {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="toggle-btn" id="toggleBtn">☰</button>
+
+  <div class="sidebar" id="sidebar">
+    <img src="/images/LOGO .png" alt="logo" />
+    <ul>
+      <li><a href="HomeAdvisor.html">Home</a></li>
+      <li><a href="ProfileAdvisor.html" class="active">Profile</a></li>
+      <li><a href="datasearch.html">DataSearch</a></li>
+      <li><a href="select advisor.html">Creation</a></li>
+      <li><a href="alarmAdvisor.html">Alarm</a></li>
+      <li><a href="newsAdvisor.html">News</a></li>
+    </ul>
+  </div>
+  <div class="main-container">
+    <div class="left-side">
+      <input type="text" class="textbox-small" id="smallTextBox" placeholder="Enter text">
+      <button class="send-btn" onclick="saveData()">Send</button>
+    </div>
+    <textarea class="textbox-large" id="largeTextBox" placeholder="Text Box"></textarea>
+  </div>
+
+  <script>
+    let savedData = '';
+
+    function saveData() {
+      // حفظ البيانات المدخلة في المتغير
+      savedData = document.getElementById('smallTextBox').value;
+      alert('Data saved: ' + savedData);
+      document.getElementById('smallTextBox').value = ''; // مسح النص بعد الحفظ
+    }
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.style.left = sidebar.style.left === '0px' ? '-250px' : '0px';
+    }
+  </script>
+
+</body>
+</html>

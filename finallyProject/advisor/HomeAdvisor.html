@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Admin Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9f9f9;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      transition: padding-left 0.3s ease;
+      padding-left: 270px;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      left: 270px;
+      background: linear-gradient(to right, #56ccf2, #2f80ed);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-radius: 8px;
+      z-index: 100;
+      font-weight: bold;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(to bottom right, #e6f7ff, #beddf0);
+      border: 1px solid #2193b0;
+      padding: 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      overflow-y: auto;
+      z-index: 99;
+      transition: transform 0.3s ease;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .sidebar img {
+      width: 100%;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin: 10px 0;
+    }
+
+    .sidebar a {
+      text-decoration: none !important;
+      color: #021317;
+      font-weight: bold;
+      display: block;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 20px;
+      transition: all 0.3s ease;
+      background: linear-gradient(to right, #cce7f6, #beddf0);
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: linear-gradient(to right, #89f7fe, #66a6ff);
+      color: #003e52;
+      transform: scale(1.05);
+    }
+
+    .main {
+      flex-grow: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .header {
+      background: #fff3e0;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .charts {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .chart-container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      width: 220px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      position: relative;
+    }
+
+    .chart-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .routine table, .library table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-top: 30px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    .toppers ul {
+      list-style: none;
+      padding: 0;
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      margin-top: 30px;
+    }
+
+    .toppers li {
+      padding: 8px 0;
+      font-weight: 500;
+    }
+
+    .announcements {
+      margin-top: 30px;
+    }
+
+    .announcements div {
+      background: #fff3e0;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .cards, .charts {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" id="toggleBtn">✕</button>
+
+  <div class="sidebar" id="sidebar">
+    <img src="/images/LOGO .png" alt="logo" />
+    <ul>
+      <li><a href="HomeAdvisor.html" class="active">Home</a></li>
+      <li><a href="ProfileAdvisor.html">Profile</a></li>
+      <li><a href="datasearch.html">DataSearch</a></li>
+      <li><a href="select advisor.html">Creation</a></li>
+      <li><a href="alarmAdvisor.html">Alarm</a></li>
+      <li><a href="newsAdvisor.html">News</a></li>
+      <li><a href="StatisticsDashboard.html">StatisticsDashboard</a></li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h1>Welcome back, Admin!</h1>
+      <p>Here's what's happening in your school today.</p>
+    </div>
+
+    <div class="cards">
+      <div class="card"><h3>536</h3><p>Students</p></div>
+      <div class="card"><h3>119</h3><p>Teachers</p></div>
+      <div class="card"><h3>94</h3><p>Staff Members</p></div>
+    </div>
+
+    <div class="charts">
+      <div class="chart-container">
+        <canvas id="studentsChart"></canvas>
+        <div class="chart-label" id="studentsLabel"></div>
+        <p>Students</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="teachersChart"></canvas>
+        <div class="chart-label" id="teachersLabel"></div>
+        <p>Teachers</p>
+      </div>
+      <div class="chart-container">
+        <canvas id="staffChart"></canvas>
+        <div class="chart-label" id="staffLabel"></div>
+        <p>Staff</p>
+      </div>
+    </div>
+
+    <div class="routine">
+      <h2>📘 Class Routine</h2>
+      <table>
+        <tr><th>Time</th><th>Subject</th><th>Teacher</th></tr>
+        <tr><td>8:00 - 9:00</td><td>Math</td><td>Mr. Ahmed</td></tr>
+        <tr><td>9:00 - 10:00</td><td>Science</td><td>Ms. Salma</td></tr>
+        <tr><td>10:00 - 11:00</td><td>English</td><td>Mr. Adel</td></tr>
+      </table>
+    </div>
+
+    <div class="toppers">
+      <h2>🏆 Top Students</h2>
+      <ul>
+        <li>Fatima El-Sayed - 98%</li>
+        <li>Mohamed Hassan - 96%</li>
+        <li>Sara Ibrahim - 94%</li>
+      </ul>
+    </div>
+
+    <div class="library">
+      <h2>📚 Library Resources</h2>
+      <table>
+        <tr><th>Title</th><th>Author</th><th>Category</th></tr>
+        <tr><td>Physics Basics</td><td>Dr. Sameh</td><td>Science</td></tr>
+        <tr><td>Grammar Rules</td><td>Mr. Hani</td><td>English</td></tr>
+        <tr><td>History of Egypt</td><td>Prof. Mona</td><td>History</td></tr>
+      </table>
+    </div>
+
+    <div class="announcements">
+      <h2>📣 Announcements</h2>
+      <div>New summer course available for Science & Technology!</div>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("toggleBtn");
+    const sidebar = document.getElementById("sidebar");
+
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("hidden");
+      if (sidebar.classList.contains("hidden")) {
+        document.body.style.paddingLeft = "20px";
+        toggleBtn.style.left = "10px";
+        toggleBtn.innerHTML = "☰";
+      } else {
+        document.body.style.paddingLeft = "270px";
+        toggleBtn.style.left = "270px";
+        toggleBtn.innerHTML = "✕";
+      }
+    });
+
+    // Active link handler
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', function () {
+        document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    const makeChart = (id, present, absent, color, labelId) => {
+      const total = present + absent;
+      const percent = Math.round((present / total) * 100);
+
+      const ctx = document.getElementById(id).getContext('2d');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Present', 'Absent'],
+          datasets: [{
+            data: [present, absent],
+            backgroundColor: [color, '#eee'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          cutout: '70%',
+          plugins: { legend: { display: false } }
+        }
+      });
+
+      document.getElementById(labelId).innerText = `${percent}%`;
+    };
+
+    makeChart('studentsChart', 490, 46, '#4caf50', 'studentsLabel');
+    makeChart('teachersChart', 110, 9, '#2196f3', 'teachersLabel');
+    makeChart('staffChart', 86, 8, '#f44336', 'staffLabel');
+  </script>
+</body>
+</html>

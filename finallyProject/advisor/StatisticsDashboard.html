@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Statistics Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f0f4f8, #ffffff);
+      padding: 40px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2c3e50;
+    }
+
+    .stats-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+
+    .stat-card {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      padding: 30px;
+      width: 220px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .stat-card h2 {
+      font-size: 38px;
+      color: #2f80ed;
+      margin-bottom: 10px;
+    }
+
+    .stat-card p {
+      font-size: 18px;
+      color: #555;
+    }
+
+    .chart-container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .stat-card {
+        width: 100%;
+      }
+
+      .chart-container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📊 School Statistics Dashboard</h1>
+
+  <div class="stats-container">
+    <div class="stat-card">
+      <h2 id="studentsCount">0</h2>
+      <p>Students</p>
+    </div>
+    <div class="stat-card">
+      <h2 id="teachersCount">0</h2>
+      <p>Teachers</p>
+    </div>
+    <div class="stat-card">
+      <h2 id="classesCount">0</h2>
+      <p>Classes</p>
+    </div>
+    <div class="stat-card">
+      <h2 id="absentCount">0</h2>
+      <p>Absent Today</p>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <canvas id="attendanceChart"></canvas>
+  </div>
+
+  <script>
+    // Count up animation
+    function countUp(id, target) {
+      let count = 0;
+      const el = document.getElementById(id);
+      const step = Math.ceil(target / 60);
+      const interval = setInterval(() => {
+        count += step;
+        if (count >= target) {
+          count = target;
+          clearInterval(interval);
+        }
+        el.innerText = count;
+      }, 20);
+    }
+
+    // Start counting
+    countUp("studentsCount", 320);
+    countUp("teachersCount", 40);
+    countUp("classesCount", 28);
+    countUp("absentCount", 6);
+
+    // Chart.js pie chart
+    const ctx = document.getElementById('attendanceChart').getContext('2d');
+    const attendanceChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Present', 'Absent'],
+        datasets: [{
+          label: 'Attendance',
+          data: [314, 6], // total = 320
+          backgroundColor: ['#2f80ed', '#f39c12'],
+          borderWidth: 2,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              color: '#333',
+              font: { size: 16 }
+            }
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                let label = context.label || '';
+                let value = context.parsed;
+                let total = context.chart._metasets[0].total;
+                let percentage = ((value / total) * 100).toFixed(1);
+                return `${label}: ${value} (${percentage}%)`;
+              }
+            }
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

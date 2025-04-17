@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Result</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #2193b0, #6dd5ed);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 50%;
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    h2 {
+      color: #2193b0;
+      margin-bottom: 20px;
+    }
+
+    .result {
+      background-color: #f0f8ff;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Search Result</h2>
+    <div class="result" id="result">
+      <!-- Result will show here -->
+    </div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchID = urlParams.get('id');
+  
+    fetch(`http://localhost:3000/search?id=${searchID}`)
+      .then(response => response.json())
+      .then(data => {
+        const resultDiv = document.getElementById("result");
+        if (data.name) {
+          resultDiv.innerHTML = `<h3>${data.name}</h3><p>${data.description}</p>`;
+        } else {
+          resultDiv.innerHTML = "<p>No item found with that ID.</p>";
+        }
+      })
+      .catch(error => {
+        document.getElementById("result").innerHTML = "<p>Error retrieving data.</p>";
+        console.error(error);
+      });
+  </script>
+  
+
+</body>
+</html>

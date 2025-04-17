@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cards Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+      transition: padding-left 0.3s ease;
+    }
+
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      left: 270px;
+      background: linear-gradient(to right, #56ccf2, #2f80ed);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-radius: 8px;
+      z-index: 100;
+      font-weight: bold;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(to bottom right, #e6f7ff, #beddf0);
+      border-right: 1px solid #2193b0;
+      padding: 20px;
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      overflow-y: auto;
+      z-index: 99;
+      transition: transform 0.3s ease;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .sidebar img {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin: 10px 0;
+    }
+
+    .sidebar a {
+      text-decoration: none !important;
+      color: #021317;
+      font-weight: bold;
+      display: block;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 20px;
+      background: linear-gradient(to right, #cce7f6, #beddf0);
+      transition: all 0.3s ease;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background: linear-gradient(to right, #89f7fe, #66a6ff);
+      color: #003e52;
+      transform: scale(1.05);
+    }
+
+    .main {
+      flex-grow: 1;
+      margin-left: 250px;
+      padding: 20px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: margin-left 0.3s ease;
+    }
+
+    .sidebar.hidden ~ .main {
+      margin-left: 0;
+    }
+
+    .card-container {
+      display: flex;
+      gap: 20px;
+      width: 100%;
+      max-width: 1100px;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .card {
+      background: linear-gradient(to right, #2193b0, #6dd5ed);
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      cursor: pointer;
+      height: 420px;
+      width: 28%;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, width 0.3s ease;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 85%;
+      object-fit: cover;
+    }
+
+    .card-content {
+      height: 15%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .card-container.expanded .card {
+      width: 32%;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        width: 80%;
+      }
+
+      .card-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" id="toggleBtn">✕</button>
+
+  <div class="sidebar" id="sidebar">
+    <img src="/images/LOGO .png" alt="logo" />
+    <ul>
+      <li><a href="HomeAdvisor.html">Home</a></li>
+      <li><a href="ProfileAdvisor.html" >Profile</a></li>
+      <li><a href="datasearch.html" class="active">DataSearch</a></li>
+      <li><a href="select advisor.html">Creation</a></li>
+      <li><a href="alarmAdvisor.html">Alarm</a></li>
+      <li><a href="newsAdvisor.html">News</a></li>
+      <li><a href="StatisticsDashboard.html">StatisticsDashboard</a></li>
+    </ul>
+  </div>
+
+  <div class="main" id="main">
+    <div class="card-container" id="cardContainer">
+      <div class="card" onclick="window.location.href='searchadvisr.html'">
+        <img src="/images/388437a0f50bf9b03f51afc54ccc1ad1.jpg" alt="Card Image 1">
+        <div class="card-content">
+          Parent
+        </div>
+      </div>
+
+      <div class="card" onclick="window.location.href='searchadvisr.html'">
+        <img src="/images/60a1719d559469dbb6bfa1b6d0890e5e.jpg" alt="Card Image 2">
+        <div class="card-content">
+          Student
+        </div>
+      </div>
+
+      <div class="card" onclick="window.location.href='searchadvisr.html'">
+        <img src="/images/0ebdb9f8cb628dc5224bd2f84a2ff9e2.jpg" alt="Card Image 3">
+        <div class="card-content">
+          Teacher
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("toggleBtn");
+    const sidebar = document.getElementById("sidebar");
+    const main = document.getElementById("main");
+    const cardContainer = document.getElementById("cardContainer");
+
+    toggleBtn.addEventListener("click", () => {
+      sidebar.classList.toggle("hidden");
+      cardContainer.classList.toggle("expanded");
+
+      if (sidebar.classList.contains("hidden")) {
+        toggleBtn.style.left = "10px";
+        toggleBtn.innerHTML = "☰";
+      } else {
+        toggleBtn.style.left = "270px";
+        toggleBtn.innerHTML = "✕";
+      }
+    });
+
+    document.querySelectorAll('.sidebar a').forEach(link => {
+      link.addEventListener('click', function () {
+        document.querySelectorAll('.sidebar a').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

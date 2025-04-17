@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>News</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #2193b0, #6dd5ed);
+    }
+
+    .container {
+      width: 500px;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .textbox {
+      width: 65%;
+      height: 100px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .upload-photo {
+      width: 30%;
+      position: relative;
+      border: 2px dashed #aaa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      height: 100px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .upload-photo input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .upload-photo span {
+      font-size: 32px;
+      color: #2193b0;
+    }
+
+    .inputs-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .inputs-row input,
+    .inputs-row select {
+      width: 48%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .post-btn {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 30px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .post-btn:hover {
+      background-color: #0056b3;
+    }
+
+    #preview img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <textarea class="textbox" id="textBox" placeholder="Write something..."></textarea>
+      <div class="upload-photo">
+        <span>+</span>
+        <input type="file" id="photoInput" accept="image/*" onchange="previewImage(event)">
+      </div>
+    </div>
+
+    <div class="inputs-row">
+      <input type="date" id="dateInput">
+      <select id="listSelect">
+        <option value="">Select from list</option>
+        <option value="Option 1">Option 1</option>
+        <option value="Option 2">Option 2</option>
+      </select>
+    </div>
+
+    <button class="post-btn" onclick="submitPost()">Post</button>
+
+    <div id="preview"></div>
+  </div>
+
+  <script>
+    let uploadedImage = '';
+
+    function previewImage(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          uploadedImage = e.target.result;
+          document.getElementById('preview').innerHTML = `<img src="${uploadedImage}" alt="Uploaded Image">`;
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function submitPost() {
+      const text = document.getElementById('textBox').value;
+      const date = document.getElementById('dateInput').value;
+      const list = document.getElementById('listSelect').value;
+
+      const post = {
+        text,
+        date,
+        list,
+        image: uploadedImage
+      };
+
+      let posts = JSON.parse(localStorage.getItem('newsPosts')) || [];
+      posts.push(post);
+      localStorage.setItem('newsPosts', JSON.stringify(posts));
+
+      // Reset form without showing anything
+      document.getElementById('textBox').value = '';
+      document.getElementById('dateInput').value = '';
+      document.getElementById('listSelect').value = '';
+      document.getElementById('preview').innerHTML = '';
+      uploadedImage = '';
+
+      // Redirect to home page
+      window.location.href = 'home.html';  // تغيير هذا الى رابط صفحة الهوم الفعلي
+    }
+  </script>
+
+</body>
+</html>
