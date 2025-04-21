@@ -126,6 +126,7 @@ window.addEventListener('click', function(e) {
         document.getElementById('loginModal').style.display = 'none';
     }
 });
+
 document.getElementById('login-link').addEventListener('click', function(e) {
     e.preventDefault();
     document.getElementById('loginModal').style.display = 'flex';
@@ -190,5 +191,4 @@ document.getElementById("loginButton").addEventListener("click", async () => {
 
 document.querySelector(".close-btn").addEventListener("click", () => {
     document.getElementById("loginModal").style.display = "none";
-});
-
+}); 

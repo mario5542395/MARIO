@@ -13,36 +13,43 @@ window.addEventListener('click', function(e) {
     }
 });
 document.addEventListener('DOMContentLoaded', function() {
-    // تحقق أولاً من وجود العنصر
-    if (!document.getElementById('particles-js')) {
-      console.error('Particles container not found!');
-      return;
-    }
-  
+    // Initialize particles.js with neural network effect
     particlesJS('particles-js', {
       particles: {
-        number: { value: 350, density: { enable: true, value_area: 1000 } },
-        color: { value: "#4a90e2" },
+        number: { value: 100, density: { enable: true, value_area: 800 } },
+        color: { value: "#76C7C0" }, // Light cyan color for futuristic feel
         shape: { type: "circle" },
-        opacity: { value: 0.5, random: true },
-        size: { value: 5, random: true },
-        line_linked: { enable: true, distance: 150, color: "#4a90e2", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 4, direction: "none", random: true, straight: false, out_mode: "out" }
+        opacity: { value: 0.6, random: true },
+        size: { value: 10, random: true },
+        line_linked: {
+          enable: true,
+          distance: 100,
+          color: "#76C7C0", // Matching with particle color
+          opacity: 0.3,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 5,
+          direction: "none",
+          random: true,
+          straight: false,
+          out_mode: "bounce"
+        }
       },
       interactivity: {
-        detect_on: "canvas",
         events: {
-          onhover: { enable: true, mode: "grab" },
+          onhover: { enable: true, mode: "repulse" },
           onclick: { enable: true, mode: "push" }
+        },
+        modes: {
+          repulse: { distance: 120, duration: 0.4 },
+          push: { particles_nb: 4 }
         }
       },
       retina_detect: true
     });
   });
-  document.getElementById('login-link').addEventListener('click', function(e) {
-    e.preventDefault();
-    document.getElementById('loginModal').style.display = 'flex';
-});
 
 document.querySelector('.close-btn').addEventListener('click', function() {
     document.getElementById('loginModal').style.display = 'none';
