@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة جانبية متحركة</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        body {
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        
+        /* زر التفعيل */
+        .toggle-btn {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            background: #343a40;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .toggle-btn:hover {
+            background: #495057;
+            transform: scale(1.05);
+        }
+        
+        /* القائمة الجانبية */
+        .sidebar {
+            width: 280px;
+            background: #343a40;
+            color: white;
+            height: 100vh;
+            position: fixed;
+            left: -280px;
+            top: 0;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar-header {
+            padding: 25px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #007bff, #00a8ff);
+            border-radius: 50%;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .logo img{
+            width: 100%;
+            border-radius: 30%;
+        }
+        .project-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #e9ecef;
+            letter-spacing: 0.5px;
+        }
+        
+        .sidebar-menu {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 15px;
+        }
+        
+        .menu-item {
+            padding: 14px 15px;
+            margin-bottom: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #adb5bd;
+            font-size: 15px;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .menu-item.active {
+            background: linear-gradient(90deg, #007bff, rgba(0,123,255,0.3));
+            color: white;
+            font-weight: 500;
+        }
+        
+        .menu-item i {
+            margin-right: 12px;
+            font-size: 16px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .sidebar-footer {
+            padding: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            color: #adb5bd;
+        }
+        
+        .user-profile:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+        
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #6c757d, #495057);
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: white;
+        }
+        
+        .main-content {
+            padding: 30px;
+            padding-top: 80px; /* زيادة الحشو العلوي لإفساح المجال للزر */
+        }
+        
+        /* تأثيرات الظل عند فتح القائمة (بدون blur) */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            /* تم إزالة backdrop-filter */
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* تحسينات للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 260px;
+                left: -260px;
+            }
+            
+            .toggle-btn {
+                left: 15px;
+                top: 15px;
+            }
+            
+            .main-content {
+                padding: 20px;
+                padding-top: 70px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <button class="toggle-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo"><img src="/logo.jpg" alt=""></div>
+            <div class="project-name">ُEdu Nourish</div>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="menu-item active">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>الإحصائيات</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-users"></i>
+                <span>العملاء</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-box-open"></i>
+                <span>المنتجات</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <span>الفواتير</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">ي</div>
+                <span>المستخدم</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="overlay"></div>
+    
+    <div class="main-content">
+        <h1>مرحبًا بك في لوحة التحكم</h1>
+        <p>هذا هو المحتوى الرئيسي للصفحة. اضغط على الزر في الأعلى لفتح/إغلاق القائمة الجانبية.</p>
+        <p>تم إزالة تأثير الضبابية (blur) من الخلفية عند فتح القائمة كما طلبت.</p>
+        
+        <div style="margin-top: 20px; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+            <h3>محتوى تجريبي</h3>
+            <p>الزر يظهر فوق هذا المحتوى دون أي تأثير ضبابي على الخلفية.</p>
+        </div>
+    </div>
+    
+    <script>
+        const toggleBtn = document.querySelector('.toggle-btn');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.querySelector('.overlay');
+        
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+        
+        // إغلاق القائمة عند تغيير حجم الشاشة إذا كانت مفتوحة
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>

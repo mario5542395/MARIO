@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة جانبية - تصميم بديل</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --dark-color: #1f2937;
+            --light-color: #f9fafb;
+            --sidebar-width: 270px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        body {
+            min-height: 100vh;
+            background-color: #f3f4f6;
+        }
+        
+        /* زر التفعيل الجديد */
+        .toggle-btn {
+            position: fixed;
+            left: 25px;
+            top: 25px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+        
+        .toggle-btn:hover {
+            background: var(--secondary-color);
+            transform: rotate(90deg);
+        }
+        
+        /* القائمة الجانبية الجديدة */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: white;
+            color: var(--dark-color);
+            height: 100vh;
+            position: fixed;
+            left: calc(-1 * var(--sidebar-width));
+            top: 0;
+            box-shadow: 5px 0 30px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            z-index: 1000;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        
+        .sidebar.active {
+            left: 0;
+        }
+        
+        .sidebar-header {
+            padding: 30px 25px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 8px 16px rgba(67, 97, 238, 0.2);
+        }
+        
+        .project-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--dark-color);
+            letter-spacing: 0.5px;
+        }
+        
+        .project-version {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+        
+        .sidebar-menu {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0 15px;
+        }
+        
+        .menu-item {
+            padding: 15px 20px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            color: #6b7280;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        
+        .menu-item:hover {
+            background-color: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+            transform: translateX(8px);
+        }
+        
+        .menu-item.active {
+            background: linear-gradient(90deg, rgba(67, 97, 238, 0.1), rgba(67, 97, 238, 0.05));
+            color: var(--primary-color);
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .menu-item.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--primary-color);
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .menu-item i {
+            margin-right: 15px;
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .sidebar-footer {
+            padding: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border-radius: 12px;
+            cursor: pointer;
+            color: #6b7280;
+            background: rgba(0, 0, 0, 0.02);
+        }
+        
+        .user-profile:hover {
+            background: rgba(67, 97, 238, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #9ca3af, #6b7280);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: white;
+        }
+        
+        .user-info {
+            flex: 1;
+        }
+        
+        .user-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .user-role {
+            font-size: 12px;
+            color: #9ca3af;
+            margin-top: 3px;
+        }
+        
+        .main-content {
+            padding: 30px;
+            padding-top: 90px;
+        }
+        
+        /* تأثيرات الظل عند فتح القائمة */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* تحسينات للشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 260px;
+                left: -260px;
+            }
+            
+            .toggle-btn {
+                left: 20px;
+                top: 20px;
+            }
+            
+            .main-content {
+                padding: 25px;
+                padding-top: 80px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button class="toggle-btn">
+        <i class="fas fa-bars"></i>
+    </button>
+    
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">ش</div>
+            <div class="project-name">اسم المشروع</div>
+            <div class="project-version">الإصدار 1.0.0</div>
+        </div>
+        
+        <div class="sidebar-menu">
+            <div class="menu-item active">
+                <i class="fas fa-home"></i>
+                <span>الرئيسية</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-chart-pie"></i>
+                <span>التحليلات</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-users"></i>
+                <span>العملاء</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-shopping-bag"></i>
+                <span>المنتجات</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-file-invoice"></i>
+                <span>الفواتير</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-cog"></i>
+                <span>الإعدادات</span>
+            </div>
+            <div class="menu-item">
+                <i class="fas fa-question-circle"></i>
+                <span>المساعدة</span>
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="user-avatar">ي</div>
+                <div class="user-info">
+                    <div class="user-name">محمد أحمد</div>
+                    <div class="user-role">مدير النظام</div>
+                </div>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </div>
+    
+    <div class="overlay"></div>
+    
+    <div class="main-content">
+        <h1 style="color: #1f2937;">لوحة التحكم</h1>
+        <p style="color: #6b7280; margin-top: 10px;">هذا تصميم بديل للقائمة الجانبية بنفس الفكرة ولكن بمظهر عصري مختلف.</p>
+        
+        <div style="margin-top: 30px; padding: 25px; background: white; border-radius: 16px; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+            <h3 style="color: #1f2937; margin-bottom: 15px;">مميزات هذا التصميم</h3>
+            <ul style="color: #6b7280; line-height: 1.8; padding-right: 15px;">
+                <li>تصميم أنظف وأكثر عصرية</li>
+                <li>زوايا دائرية أكثر نعومة</li>
+                <li>تدرجات لونية متناسقة</li>
+                <li>تأثيرات حركية محسنة</li>
+                <li>عرض أكثر احترافية للمستخدم</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        const toggleBtn = document.querySelector('.toggle-btn');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.querySelector('.overlay');
+        
+        toggleBtn.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+            toggleBtn.style.transform = sidebar.classList.contains('active') ? 'rotate(90deg)' : 'rotate(0)';
+        });
+        
+        overlay.addEventListener('click', () => {
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+            toggleBtn.style.transform = 'rotate(0)';
+        });
+        
+        // إغلاق القائمة عند تغيير حجم الشاشة إذا كانت مفتوحة
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768 && sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+                toggleBtn.style.transform = 'rotate(0)';
+            }
+        });
+    </script>
+</body>
+</html>
