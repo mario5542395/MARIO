@@ -166,11 +166,12 @@ a.menu-link { display: none; }
 
 .main-header {
     background-color: rgba(22,34,57,0.95);
-    height: 70px;
+    height: auto;
     position: fixed;
     z-index: 12;
     width: 100%;
     top: 0;
+    padding: 10px 0;
 }
 
 .main-header .logo {
@@ -192,8 +193,7 @@ a.menu-link { display: none; }
 
 .main-menu {
     float: right;
-    padding-right: 60px;
-}
+    padding-right: 15px !important;}
 
 .main-menu li {
     display: inline-block;
@@ -284,4 +284,116 @@ a.menu-link { display: none; }
     border: 2px solid transparent;
     border-bottom: 1px solid rgba(250,250,250,0.25);
   }
+}
+.logo {
+    padding-left: 15px !important;
+    line-height: 1.5;
+}
+@media (max-width: 768px) {
+    .main-menu {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .main-menu li {
+        display: block;
+        line-height: 40px;
+        margin: 0;
+    }
+    
+    .main-menu li a {
+        padding: 5px 10px;
+        font-size: 14px;
+    }
+}
+/* تأثيرات القائمة */
+#menu {
+    transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+    transform-origin: top;
+    opacity: 0;
+    transform: scaleY(0);
+    max-height: 0;
+    overflow: hidden;
+}
+
+#menu.active {
+    opacity: 1;
+    transform: scaleY(1);
+    max-height: 1000px;
+}
+
+/* تأثيرات الأيقونة */
+.menu-link i {
+    transition: all 0.3s ease;
+    font-size: 28px;
+}
+
+.menu-link:hover i {
+    color: #f5a425;
+    transform: rotate(90deg);
+}
+
+/* تظليل الخلفية */
+body.menu-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* تحسين ظهور القائمة */
+.main-menu {
+    position: relative;
+    z-index: 999;
+    background: rgba(22, 34, 57, 0.98);
+}
+
+@media (min-width: 951px) {
+    #menu {
+        opacity: 1 !important;
+        transform: scaleY(1) !important;
+        max-height: none !important;
+    }
+    
+    body.menu-open::before {
+        display: none !important;
+    }
+}
+/* أساسيات القائمة */
+#menu {
+    display: none;
+    transition: all 0.3s ease;
+}
+
+#menu.active {
+    display: block;
+}
+
+.menu-link {
+    cursor: pointer;
+    z-index: 1000;
+}
+
+/* تأثيرات الجسم عند فتح القائمة */
+body.menu-open {
+    overflow: hidden;
+}
+
+@media (min-width: 951px) {
+    #menu {
+        display: block !important;
+    }
+    .menu-link {
+        display: none !important;
+    }
 }

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .card {
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 25px;
+      background-color: #fff;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    .table-header {
+      background-color: #3b82f6;
+      color: white;
+      text-align: center;
+    }
+    .table-cell {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #f1f1f1;
+    }
+    .table-cell:hover {
+      background-color: #f0f9ff;
+      cursor: pointer;
+    }
+    .heading {
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .profile-link {
+      transition: all 0.3s ease;
+    }
+    .profile-link:hover {
+      text-decoration: underline;
+      color: #4CAF50;
+    }
+    .badge {
+      padding: 5px 10px;
+      border-radius: 15px;
+      background-color: #4CAF50;
+      color: white;
+      font-weight: bold;
+    }
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #3b82f6;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .error-message {
+      color: #ef4444;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-indigo-300 via-purple-200 to-blue-200 min-h-screen p-6 flex flex-col items-center">
+
+  <!-- Welcome and Profile Section -->
+  <div class="card mb-8 max-w-4xl w-full">
+    <h2 class="text-4xl font-semibold text-center text-blue-800 heading" id="teacherName">
+      <span id="loadingIndicator" class="loading mr-2"></span>
+      Loading Teacher Data...
+    </h2>
+    <p class="mt-4 text-lg text-center text-gray-600">Here you can manage your schedule, attendance, and more.</p>
+    <div class="flex items-center justify-center mt-6 space-x-4">
+      <!-- Profile Preview -->
+      <div class="flex items-center space-x-4">
+        <img src="https://via.placeholder.com/100" alt="Profile Picture" class="rounded-full w-16 h-16" id="teacherProfilePic">
+        <div>
+          <p class="text-xl font-medium text-blue-800" id="teacherFullName">Loading...</p>
+          <p class="text-sm text-gray-600" id="teacherSubject">Loading...</p>
+          <p class="text-xs text-red-500" id="errorMessage"></p>
+        </div>
+      </div>
+      <!-- Go to Profile Button -->
+      <a href="/teacher-profile" class="profile-link bg-gradient-to-r from-blue-600 to-blue-400 text-white py-2 px-6 rounded-full text-lg">View Full Profile</a>
+    </div>
+  </div>
+
+  <!-- Weekly Schedule Section -->
+  <div class="card mb-8 max-w-4xl w-full">
+    <h3 class="text-3xl font-semibold text-blue-700 text-center">Your Weekly Schedule</h3>
+    <table class="min-w-full mt-6" id="scheduleTable">
+      <thead>
+        <tr class="table-header">
+          <th class="table-cell">Day</th>
+          <th class="table-cell">Time</th>
+          <th class="table-cell">Subject</th>
+        </tr>
+      </thead>
+      <tbody id="scheduleBody">
+        <tr>
+          <td colspan="3" class="text-center py-4">Loading schedule data...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Attendance Section -->
+  <div class="card mb-8 max-w-4xl w-full">
+    <h3 class="text-3xl font-semibold text-blue-700 text-center">Your Attendance</h3>
+    <table class="min-w-full mt-6" id="attendanceTable">
+      <thead>
+        <tr class="table-header">
+          <th class="table-cell">Date</th>
+          <th class="table-cell">Status</th>
+        </tr>
+      </thead>
+      <tbody id="attendanceBody">
+        <tr>
+          <td colspan="2" class="text-center py-4">Loading attendance data...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      const apiUrl = 'http://54.242.19.19:3000/api/teachers';
+      const loadingIndicator = document.getElementById('loadingIndicator');
+      const errorMessage = document.getElementById('errorMessage');
+      
+      try {
+        // إظهار حالة التحميل
+        loadingIndicator.style.display = 'inline-block';
+        errorMessage.textContent = '';
+        
+        // إرسال طلب API مع معالجة CORS
+        const response = await fetch(apiUrl, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          mode: 'cors'
+        });
+
+        // التحقق من حالة الاستجابة
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Server responded with ${response.status}: ${errorText || 'No error details'}`);
+        }
+
+        // تحليل البيانات
+        const data = await response.json();
+        console.log('API Response Data:', data);
+
+        // إخفاء مؤشر التحميل
+        loadingIndicator.style.display = 'none';
+
+        // التحقق من وجود بيانات صالحة
+        if (!data || (Array.isArray(data) && data.length === 0)) {
+          throw new Error('No teacher data found in response');
+        }
+
+        // استخراج بيانات المعلم
+        const teacher = Array.isArray(data) ? data[0] : data;
+        
+        // التحقق من وجود الحقول الأساسية
+        if (!teacher.username && !teacher.teacherID) {
+          throw new Error('Invalid teacher data structure');
+        }
+
+        // تحديث واجهة المستخدم
+        updateTeacherProfile(teacher);
+        fillScheduleTable(teacher.SubjectID || 'Mathematics');
+        fillAttendanceTable();
+
+      } catch (error) {
+        console.error('Error loading teacher data:', error);
+        loadingIndicator.style.display = 'none';
+        
+        // عرض رسالة الخطأ للمستخدم
+        document.getElementById('teacherName').textContent = "Error Loading Data";
+        document.getElementById('teacherFullName').textContent = "Failed to load profile";
+        document.getElementById('teacherSubject').textContent = "Please try again";
+        errorMessage.textContent = error.message;
+        
+        // عرض بيانات افتراضية في حالة الخطأ
+        fillScheduleTable('Mathematics');
+        fillAttendanceTable();
+      }
+
+      function updateTeacherProfile(teacher) {
+        document.getElementById('teacherName').textContent = `Welcome, ${teacher.username || 'Teacher'}!`;
+        document.getElementById('teacherFullName').textContent = teacher.username || 'No Name Available';
+        document.getElementById('teacherSubject').textContent = teacher.SubjectID || 'Subject Not Specified';
+        
+        // يمكنك إضافة المزيد من الحقول هنا
+        // if (teacher.profilePicture) {
+        //   document.getElementById('teacherProfilePic').src = teacher.profilePicture;
+        // }
+      }
+
+      function fillScheduleTable(mainSubject = 'Mathematics') {
+        const scheduleBody = document.getElementById('scheduleBody');
+        scheduleBody.innerHTML = '';
+        
+        const scheduleData = [
+          { day: 'Monday', time: '9:00 AM - 11:00 AM', subject: mainSubject },
+          { day: 'Tuesday', time: '10:00 AM - 12:00 PM', subject: 'Physics' },
+          { day: 'Wednesday', time: '9:00 AM - 11:00 AM', subject: mainSubject },
+          { day: 'Thursday', time: '11:00 AM - 1:00 PM', subject: 'Chemistry' },
+          { day: 'Friday', time: '10:00 AM - 12:00 PM', subject: mainSubject }
+        ];
+        
+        scheduleData.forEach(item => {
+          const row = document.createElement('tr');
+          row.className = 'hover:bg-gray-50';
+          row.innerHTML = `
+            <td class="table-cell">${item.day}</td>
+            <td class="table-cell">${item.time}</td>
+            <td class="table-cell">${item.subject}</td>
+          `;
+          scheduleBody.appendChild(row);
+        });
+      }
+
+      function fillAttendanceTable() {
+        const attendanceBody = document.getElementById('attendanceBody');
+        attendanceBody.innerHTML = '';
+        
+        const attendanceData = [
+          { date: new Date().toISOString().split('T')[0], status: 'Present' },
+          { date: '2023-10-02', status: 'Present' },
+          { date: '2023-10-03', status: 'Absent' },
+          { date: '2023-10-04', status: 'Present' },
+          { date: '2023-10-05', status: 'Late' }
+        ];
+        
+        attendanceData.forEach(item => {
+          const row = document.createElement('tr');
+          row.className = 'hover:bg-gray-50';
+          
+          let statusClass = 'text-green-600';
+          if (item.status === 'Absent') statusClass = 'text-red-600';
+          if (item.status === 'Late') statusClass = 'text-yellow-600';
+          
+          row.innerHTML = `
+            <td class="table-cell">${item.date}</td>
+            <td class="table-cell ${statusClass} font-bold">${item.status}</td>
+          `;
+          attendanceBody.appendChild(row);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

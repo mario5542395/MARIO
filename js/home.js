@@ -376,3 +376,35 @@ fetch(apiUrl)
             `;
         });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // اختيار العناصر المطلوبة
+    const menuLink = document.querySelector('.menu-link');
+    const menu = document.getElementById('menu');
+    
+    // إضافة حدث النقر لأيقونة القائمة
+    if(menuLink && menu) {
+        menuLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // تبديل حالة القائمة (فتح/إغلاق)
+            if(menu.classList.contains('active')) {
+                menu.classList.remove('active');
+                menu.style.maxHeight = '0';
+            } else {
+                menu.classList.add('active');
+                menu.style.maxHeight = menu.scrollHeight + 'px';
+            }
+        });
+        
+        // إغلاق القائمة عند النقر على أي عنصر فيها (اختياري)
+        const menuItems = menu.querySelectorAll('.main-menu li a menu');
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                if(window.innerWidth < 950) {
+                    menu.classList.remove('active');
+                    menu.style.maxHeight = '0';
+                }
+            });
+        });
+    }
+});

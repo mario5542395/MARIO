@@ -561,3 +561,38 @@
         font-size: 1.5rem;
     }
 }
+/* أضف هذا إلى ملف acadmais.css */
+@media (max-width: 768px) {
+    .carousel-caption h5 {
+      font-size: 2rem !important;
+    }
+    
+    .carousel-caption p {
+      font-size: 1.2rem !important;
+    }
+    
+    .carousel-fullscreen {
+      height: 60vh !important;
+    }
+  }
+  @media (max-width: 768px) {  
+.carousel{
+    height: auto;
+    width: auto;
+}
+.section{
+    width: 500px;
+    height: 500px;
+}
+.content-wrapper{
+width: 400px;
+}
+.images-grid{
+    width: 400px;
+}
+
+  }
+
+
+
+

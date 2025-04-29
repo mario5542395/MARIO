@@ -27,7 +27,25 @@
     position: absolute;
     text-align: left;
 }
-
+.carousel-caption h5 {
+    font-size: 2rem !important; /* بدلاً من 70px */
+}
+.carousel-caption p {
+    font-size: 1.2rem !important; /* بدلاً من 40px */
+}
+@media (max-width: 576px) {
+    .carousel-fullscreen {
+        height: 50vh;
+    }
+    
+    .carousel-caption h5 {
+        font-size: 1.5rem !important;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem !important;
+    }
+}
 .section {
     display: block;
     position: relative;
@@ -77,9 +95,9 @@
 }
 
 .section-title h3 {
-    font-size: 60px;
+    font-size: 2rem;
     font-weight: 500;
-    line-height: 62px;
+    line-height: 1.2;
     margin: 0 0 25px;
     padding: 0;
     text-transform: none;
@@ -90,7 +108,9 @@
 .section.db h3 {
     color: #ffffff;
 }
-
+.message-box {
+    padding: 15px;
+}
 .message-box a{
 	position: relative;
 	font-size: 18px;
@@ -137,6 +157,24 @@
   left: 50%;
   top: 50%;
   width: 0;
+}
+@media (max-width: 768px) {
+    .section-title h3 {
+        font-size: 1.5rem;
+    }
+    
+    .row.align-items-center {
+        flex-direction: column;
+    }
+    
+    .col-xl-6, .col-lg-6 {
+        order: 1;
+    }
+    
+    .col-xl-6:last-child, .col-lg-6:last-child {
+        order: 2;
+        margin-top: 20px;
+    }
 }
 .section.wb img{
     border-radius: 20%;
@@ -207,6 +245,36 @@ body.host_version .stat-wrap .alignleft {
 }
 .team-item .team-text:hover{
     border: 10px solid red;
+}
+@media (max-width: 992px) {
+    .team-item img.img-fluid {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto;
+    }
+    
+    .carousel-inner .row {
+        flex-direction: column;
+    }
+    .team-item .team-text {
+        text-align: center;
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        bottom: 0;
+        right: 0;
+        left: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #FFFFFF;
+        border: 17px solid var(--light);
+        border-radius: 250px;
+        transition: .5s;
+        border:  rgba(22, 34, 57, 0.95) 5px solid;
+        font-size: medium;
+    }
 }
 .member_counter {
     background-image: -moz-linear-gradient(0deg, #ee390f 0%, #f9b700 100%);

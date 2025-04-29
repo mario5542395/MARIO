@@ -726,4 +726,153 @@ h1, h2, h3, h4, h5, h6 {
               font-size: 1.5rem;
           }
       }
-      
+      /* إضافة Media Queries للجوال والتابلت */
+@media (max-width: 768px) {
+  /* تعديل حجم الخطوط والعناصر الرئيسية */
+  .section-title h3 {
+      font-size: 32px;
+      line-height: 1.3;
+  }
+  
+  .section-title p {
+      font-size: 16px;
+  }
+  
+  /* تعديل تخطيط الصفوف في الأقسام */
+  .row.align-items-center {
+      flex-direction: column;
+  }
+  
+  .col-xl-6, .col-lg-6 {
+      width: 100%;
+      padding: 0 15px;
+  }
+  
+  /* تعديل حجم الصور */
+  .about-img {
+      max-width: 100%;
+      margin-top: 20px;
+  }
+  
+  /* تعديل قسم العداد */
+  .member_counter .single_member_counter span {
+      font-size: 40px;
+  }
+  
+  .member_counter .single_member_counter h4 {
+      font-size: 18px;
+  }
+  
+  /* تعديل شريط التمرير للآراء */
+  .testimonial_slider {
+      padding: 20px;
+  }
+  
+  .testimonial_slider_text {
+      padding: 20px !important;
+  }
+}
+
+/* تعديلات للتابلت */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section-title h3 {
+      font-size: 36px;
+  }
+  
+  .member_counter .single_member_counter span {
+      font-size: 50px;
+  }
+}
+/* جعل القوائم سهلة الاستخدام على الجوال */
+@media (max-width: 768px) {
+  .main-menu ul {
+      flex-direction: column;
+  }
+  
+  .footer-links li {
+      margin-bottom: 8px;
+  }
+}
+/* تحسين الأزرار للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .btn_1 {
+      padding: 10px 25px;
+      font-size: 14px;
+  }
+  
+  .hover-btn-new {
+      line-height: 40px;
+      font-size: 13px;
+  }
+}
+@media (max-width: 768px) {
+  .testimonial_slider .row {
+      flex-direction: column;
+  }
+  
+  .testimonial_slider_img {
+      margin-top: 20px;
+  }
+}
+/* جعل الصور متجاوبة */
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* تحسينات للجوال (أقل من 768px) */
+@media (max-width: 768px) {
+  /* إصلاح تخطيط الشرائح */
+  .testimonial_part .testimonial_slider .row {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* توسيط الصورة وتصغيرها */
+  .testimonial_slider_img {
+    text-align: center !important;
+    margin-top: 20px;
+    
+  }
+  .testimonial_slider_img img {
+    width: 250px !important;
+    height: 250px !important;
+    border-radius: 20% !important;
+  }
+
+  /* تعديل نص الشهادة */
+  .testimonial_slider_text {
+    padding: 20px !important;
+    margin-bottom: 20px;
+    text-align: center !important;
+    width: 250px;
+    height:280px;
+  }
+
+  /* إخفاء علامة الاقتباس */
+  .testimonial_slider_text:after {
+    display: none !important;
+  }
+
+  /* إصلاح نقاط التمرير */
+  .testimonial_part .owl-dots {
+    margin-left: 0 !important;
+    text-align: center !important;
+    padding-top: 20px !important;
+  }
+}
+
+/* تحسينات للتابلت (من 768px إلى 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .testimonial_slider .row {
+    align-items: center !important;
+  }
+  
+  .testimonial_slider_text {
+    padding: 30px !important;
+  }
+
+  .testimonial_slider_img img {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
