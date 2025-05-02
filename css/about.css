@@ -907,3 +907,26 @@ img {
     width: 300px;
   }
 }
+/* Responsive */
+@media (max-width: 768px) {
+  .login-content {
+      flex-direction: column;
+      gap: 20px;
+  }
+
+  .login-box {
+      padding: 25px 20px;
+  }
+
+  .login-form {
+      text-align: center;
+  }
+
+  .login-form h3 {
+      text-align: center;
+  }
+
+  .project-name {
+      font-size: 1.5rem;
+  }
+}

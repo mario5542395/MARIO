@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // إغلاق القائمة عند النقر على أي عنصر فيها (اختياري)
-        const menuItems = menu.querySelectorAll('.main-menu li a menu');
+        const menuItems = menu.querySelectorAll('.main-menu li a'); // تم تعديل selector
         menuItems.forEach(item => {
             item.addEventListener('click', function() {
                 if(window.innerWidth < 950) {
@@ -408,4 +408,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
 // تحسينات للقائمة على الموبايل

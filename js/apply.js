@@ -294,7 +294,7 @@ window.addEventListener('click', function(e) {
                 });
                 
                 // إغلاق القائمة عند النقر على أي عنصر فيها (اختياري)
-                const menuItems = menu.querySelectorAll('.main-menu li a');
+                const menuItems = menu.querySelectorAll('.main-menu li a'); // تم تعديل selector
                 menuItems.forEach(item => {
                     item.addEventListener('click', function() {
                         if(window.innerWidth < 950) {
@@ -305,3 +305,4 @@ window.addEventListener('click', function(e) {
                 });
             }
         });
+        

@@ -562,54 +562,33 @@
     }
   }
   @media (max-width: 412px) {
+    /* 🎠 كابتشن الكاروسيل */
     .carousel-caption {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        z-index: 10;
-        width: 90%;         /* ✅ خلى العرض 90% من حجم الصورة */
-  max-width: 500px;   /* ✅ حد أقصى للعرض عشان ما يكبرش زيادة */
-  padding: 10px 20px; /* ✅ مسافة داخلية للكلام */
-  background-color: rgba(0, 0, 0, 0.3); /* ✅ لون شفاف خلف الكلام لو تحب */
-  border-radius: 12px;
-      }
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 10;
+      width: 90%;
+      max-width: 500px;
+      padding: 10px 20px;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+    }
+  
     .carousel-title {
-      font-size: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffffff;
     }
   
     .carousel-subtitle {
-      font-size: 20px;
+      font-size: 16px;
+      color: #dddddd;
     }
-    .section-text {
-        font-size: 1rem;
-        line-height: 1.8;
-        color: #4b5563;
-    }
-    .section-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        line-height: 1.2;
-        color: #1a1a1a;
-        margin-bottom: 1.5rem;
-        position: relative;
-    }
-    
-    .content-paragraph {
-        font-size: 1rem;
-        line-height: 1.8;
-        color: #ffffff;
-        margin-bottom: 1.5rem;
-    }
-    .content-title {
-        font-size: 2.9rem;
-        font-weight: 800;
-        line-height: 1.2;
-        color: #ffffff;
-        margin-bottom: 1.5rem;
-        position: relative;
-    }
+  
+    /* 🖼️ صور الأقسام */
     .images-grid,
     .media-grid {
       display: flex;
@@ -618,76 +597,124 @@
       gap: 10px;
       padding: 0 10px;
     }
-    
-  .images-grid img,
-  .media-grid img {
-    width: 100%;
-    max-width: 320px; /* ⬅ مناسب لموبايل */
-    height: auto;
-    padding: 0;
-    margin: 0;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-  }
-    .carousel-fullscreen {
-        height: 65vh;
-        margin-bottom: 0 !important;
-        padding-bottom: 0 !important;
-      }
-      
-    .carousel-fullscreen .carousel-item img {
-        width: 100%;
-        height: 65vh; /* أو أي نسبة مناسبة */
-        object-fit: cover;
-        padding: 0 !important;
-        margin: 0 !important;
-        overflow: hidden;
+  
+    .images-grid img,
+    .media-grid img {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      padding: 0;
+      margin: 0;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
     }
-    .special-section,
-.content-section {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-}
-
-    .footer {
-        height: auto;
-        padding: 20px 0 30px;
-        background: #ffffff;
+  
+    /* 📖 النصوص */
+    .section-title,
+    .content-title {
+      font-size: 2rem;
+      text-align: center;
+      color: #d7d7d7;
+      margin-bottom: 1rem;
+    }
+    .section-title{
+        color: #000;
+    }
+    .section-text{
         color: #000000;
-        text-align: left;
-        border-top: 1px solid #ddd;
     }
-    .carousel-item {
-        position: relative;
-      }
-      .special-section {
-        background-image: #ffffff9e;
-        height: 80vh;
-        width: 100vw;
-        padding: 0;
-        margin: 0;
-        display: flex
-    ;
-        align-items: center;
-        overflow: hidden;
+    .section-text,
+    .content-paragraph {
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: center;
+      padding: 0 10px;
     }
+    .content-paragraph {
+        color: #ddd;
+    }
+    /* 🔳 أقسام الخلفية */
+    .special-section,
     .content-section {
-        background-color: rgba(22, 34, 57, 0.95);
-        height: 80vh;
-        width: 100vw;
-        padding: 0;
-        margin: 0;
-        display: flex
-    ;
-        align-items: center;
-        overflow: hidden;
+      padding: 20px 0;
+      margin: 0;
+      height: auto;
+      width: 100%;
+      display: block;
+      overflow: hidden;
     }
+    .content-section{
+        background-color:rgba(22, 34, 57, 0.95);
+    };
+    .special-section{
+        background-color: #f9f9f9;
+    }
+  
+    /* 🔄 الكاروسيل */
+    .carousel-fullscreen {
+      height: 65vh;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  
+    .carousel-fullscreen .carousel-item img,
     .carousel-item img {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
-        display: block;
-      }
-      
-}
+      width: 100%;
+      height: 65vh;
+      object-fit: cover;
+    }
+  
+    /* 🦶 الفوتر */
+    .footer {
+      height: auto;
+      padding: 30px 15px;
+      background: #ffffff;
+      color: #000000;
+      text-align: center;
+      border-top: 1px solid #ddd;
+    }
+  
+    .footer .widget-title h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+  
+    .footer-links,
+    .footer-links-soi {
+      padding: 0;
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+  
+    .footer-links li,
+    .footer-links-soi li {
+      margin: 5px 0;
+    }
+  }
+  /* Responsive */
+@media (max-width: 768px) {
+    .login-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+  
+    .login-box {
+        padding: 25px 20px;
+    }
+  
+    .login-form {
+        text-align: center;
+    }
+  
+    .login-form h3 {
+        text-align: center;
+    }
+  
+    .project-name {
+        font-size: 1.5rem;
+    }
+  }
