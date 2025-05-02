@@ -459,6 +459,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Roboto", sans-serif;
   color: #888888;
 }
+.testimonial_slider_img img{
+  width: 100px;
+}
 /* تحسين تصميم الفوتر */
 .footer {
   margin-top:30px ;
@@ -702,32 +705,27 @@ h1, h2, h3, h4, h5, h6 {
       .close-btn:hover {
           color: #000;
       }
-      
-      /* Responsive */
-      @media (max-width: 768px) {
-          .login-content {
-              flex-direction: column;
-              gap: 20px;
-          }
-      
-          .login-box {
-              padding: 25px 20px;
-          }
-      
-          .login-form {
-              text-align: center;
-          }
-      
-          .login-form h3 {
-              text-align: center;
-          }
-      
-          .project-name {
-              font-size: 1.5rem;
-          }
-      }
       /* إضافة Media Queries للجوال والتابلت */
 @media (max-width: 768px) {
+  .login-content {
+    flex-direction: row;
+}
+
+.login-box {
+    padding: 20px;
+}
+
+.login-form {
+    text-align: center;
+}
+
+.login-form h3 {
+    text-align: center;
+}
+
+.project-name {
+    font-size: 1.5rem;
+}
   /* تعديل حجم الخطوط والعناصر الرئيسية */
   .section-title h3 {
       font-size: 32px;
@@ -745,7 +743,7 @@ h1, h2, h3, h4, h5, h6 {
   
   .col-xl-6, .col-lg-6 {
       width: 100%;
-      padding: 0 15px;
+      padding: 0 40px;
   }
   
   /* تعديل حجم الصور */
@@ -764,63 +762,21 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   /* تعديل شريط التمرير للآراء */
-  .testimonial_slider {
-      padding: 20px;
-  }
-  
-  .testimonial_slider_text {
-      padding: 20px !important;
-  }
+
 }
 
 /* تعديلات للتابلت */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .section-title h3 {
-      font-size: 36px;
-  }
-  
-  .member_counter .single_member_counter span {
-      font-size: 50px;
-  }
-}
+
 /* جعل القوائم سهلة الاستخدام على الجوال */
-@media (max-width: 768px) {
-  .main-menu ul {
-      flex-direction: column;
-  }
-  
-  .footer-links li {
-      margin-bottom: 8px;
-  }
-}
+
 /* تحسين الأزرار للشاشات الصغيرة */
-@media (max-width: 768px) {
-  .btn_1 {
-      padding: 10px 25px;
-      font-size: 14px;
-  }
-  
-  .hover-btn-new {
-      line-height: 40px;
-      font-size: 13px;
-  }
-}
-@media (max-width: 768px) {
-  .testimonial_slider .row {
-      flex-direction: column;
-  }
-  
-  .testimonial_slider_img {
-      margin-top: 20px;
-  }
-}
+
 /* جعل الصور متجاوبة */
 img {
   max-width: 100%;
   height: auto;
 }
-/* تحسينات للجوال (أقل من 768px) */
-@media (max-width: 768px) {
+@media (max-width: 575px) {
   /* إصلاح تخطيط الشرائح */
   .testimonial_part .testimonial_slider .row {
     display: flex !important;
@@ -860,19 +816,94 @@ img {
     padding-top: 20px !important;
   }
 }
-
-/* تحسينات للتابلت (من 768px إلى 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .testimonial_slider .row {
-    align-items: center !important;
+@media (min-width:576) and (max-width:748){
+  .testimonial_part .testimonial_slider .row {
+    display: flex !important;
+    flex-direction: column !important;
   }
-  
+
+  /* توسيط الصورة وتصغيرها */
+  .testimonial_slider_img {
+    text-align: center !important;
+    margin-top: 20px;
+    
+  }
+  .testimonial_slider_img img {
+    width: 50px ;
+    height: 50px ;
+    border-radius: 20% !important;
+  }
+
+  /* تعديل نص الشهادة */
   .testimonial_slider_text {
-    padding: 30px !important;
+    
+    text-align: center !important;
+    width: 50px;
+    height:80px;
+  }
+
+  /* إخفاء علامة الاقتباس */
+  .testimonial_slider_text:after {
+    display: none !important;
+  }
+
+  /* إصلاح نقاط التمرير */
+  .testimonial_part .owl-dots {
+    margin-left: 0 !important;
+    text-align: center !important;
+    padding-top: 20px !important;
+  }
+}
+/* تحسينات للجوال (أقل من 768px) */
+
+
+/* تنسيق للتابلت فقط (من 768px إلى أقل من 992px) */
+
+@media (min-width:749) and (max-width: 992px){
+  .testimonial_slider .row {
+    display: flex;
+    flex-direction: row; /* ترتيب أفقي */
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+  .testimonial_slider_img {
+    order: 0;
+    margin: 0 0p 0 0;
+  }
+  .testimonial_slider_img img {
+    width: 10px;
+    height: 350px;
+  }
+  .testimonial_slider_text {
+    order: 0;
+    padding: 0;
+    text-align: left;
+    width: 250px;
+  }
+}
+/* تنسيق مخصص للديسكتوب (992px فأعلى) */
+@media (min-width: 992px) {
+  .testimonial_slider .row {
+    display: flex;
+    flex-direction: row; /* ترتيب أفقي */
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .testimonial_slider_img {
+    order: 0;
+    margin: 0 20px 0 0;
   }
 
   .testimonial_slider_img img {
-    width: 200px !important;
-    height: 200px !important;
+    width: 250px;
+    height: 300px;
+  }
+
+  .testimonial_slider_text {
+    order: 0;
+    padding: 0;
+    text-align: left;
+    width: 300px;
   }
 }

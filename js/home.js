@@ -408,3 +408,4 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// تحسينات للقائمة على الموبايل

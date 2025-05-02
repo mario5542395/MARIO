@@ -31,51 +31,60 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const carousel = document.querySelector('.textimonial_iner.owl-carousel');
-    
+
     if (carousel) {
         let currentIndex = 0;
         const items = carousel.querySelectorAll('.owl-item:not(.cloned)');
         const totalItems = items.length;
-        
+
         function rotateCarousel() {
             currentIndex = (currentIndex + 1) % totalItems;
-            const offset = -currentIndex * 1443; // 1443px هو عرض كل عنصر كما في الكود الأصلي
-            
+
+            const itemWidth = items[0].offsetWidth;
+            const offset = -currentIndex * itemWidth;
+
             const stage = carousel.querySelector('.owl-stage');
             if (stage) {
+                stage.style.transition = 'transform 0.5s ease'; // حركة ناعمة
                 stage.style.transform = `translate3d(${offset}px, 0px, 0px)`;
-                
-                // تحديث النقاط النشطة (dots) إذا كانت موجودة
+
+                // تحديث النقاط
                 const dots = carousel.querySelectorAll('.owl-dot');
                 dots.forEach((dot, index) => {
-                    if (index === currentIndex) {
-                        dot.classList.add('active');
-                    } else {
-                        dot.classList.remove('active');
-                    }
+                    dot.classList.toggle('active', index === currentIndex);
                 });
             }
         }
-        
-        // بدء الدوران كل 3 ثواني
-        setInterval(rotateCarousel, 5000);
-        
-        // يمكنك إضافة تفاعل النقاط إذا أردت
+
+        // دوران تلقائي كل 5 ثواني
+        const interval = setInterval(rotateCarousel, 5000);
+
+        // النقاط اليدوية
         const dots = carousel.querySelectorAll('.owl-dot');
         dots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
+                clearInterval(interval); // نوقف التكرار المؤقت عند التفاعل
                 currentIndex = index;
-                const offset = -currentIndex * 1443;
+
+                const itemWidth = items[0].offsetWidth;
+                const offset = -currentIndex * itemWidth;
+
                 const stage = carousel.querySelector('.owl-stage');
                 if (stage) {
+                    stage.style.transition = 'transform 0.5s ease';
                     stage.style.transform = `translate3d(${offset}px, 0px, 0px)`;
                 }
+
+                dots.forEach((d, i) => {
+                    d.classList.toggle('active', i === currentIndex);
+                });
             });
         });
     }
 });
+
 document.addEventListener("DOMContentLoaded", function() {
     const navItems = document.querySelectorAll(".main-nav li");
     

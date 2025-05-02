@@ -1035,3 +1035,249 @@ news-section {
     padding-top: 15px;
     border-top: 1px solid #eee;
 }
+/* تحسينات عامة للاستجابة */
+@media (max-width: 1200px) {
+    .container {
+        padding: 0 15px;
+    }
+}
+
+/* تحسينات الكاروسيل الرئيسي */
+@media (max-width: 992px) {
+    .carousel-fullscreen {
+        height: 70vh !important;
+    }
+    
+    .carousel-caption h5 {
+        font-size: 2.5rem !important;
+    }
+    
+    .carousel-caption p {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .carousel-fullscreen {
+        height: 60vh !important;
+    }
+    
+    .carousel-caption h5 {
+        font-size: 2rem !important;
+    }
+    
+    .carousel-caption p {
+        font-size: 1.2rem !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-fullscreen {
+        height: 50vh !important;
+    }
+    
+    .carousel-caption h5 {
+        font-size: 1.5rem !important;
+        margin-bottom: 10px;
+    }
+    
+    .carousel-caption p {
+        font-size: 1rem !important;
+    }
+    
+    .carousel-indicators {
+        bottom: 10px;
+    }
+}
+
+/* تحسينات قسم About */
+@media (max-width: 768px) {
+    .row.align-items-center {
+        flex-direction: column;
+    }
+    
+    .col-xl-6, .col-lg-6 {
+        order: 1;
+        margin-bottom: 30px;
+    }
+    
+    .col-xl-6:last-child, .col-lg-6:last-child {
+        order: 2;
+    }
+    
+    .section-title h3 {
+        font-size: 1.8rem;
+    }
+    
+    .section-title p.lead {
+        font-size: 1rem;
+    }
+}
+
+/* تحسينات بطاقات المعلمين */
+@media (max-width: 992px) {
+    .team-item .team-text {
+        width: 200px;
+        height: 200px;
+        left: 100%;
+        transform: translateX(-50%);
+        bottom: -50px;
+        
+    }
+    
+    .team-item img.img-fluid {
+        width: 200px !important;
+        height: 200px !important;
+        margin: 0 auto 70px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-item {
+        margin-bottom: 100px;
+    }
+    
+    .team-item .team-text {
+        width: 180px;
+        height: 180px;
+        bottom: -40px;
+        position: sticky;
+    }
+    
+    .team-item img.img-fluid {
+        width: 180px !important;
+        height: 180px !important;
+    }
+    
+    .teacherSlider .carousel-inner {
+        padding: 0 15px;
+    }
+}
+
+/* تحسينات قسم Why Us */
+@media (max-width: 768px) {
+    #why-us .col-md-4 {
+        margin-bottom: 30px;
+    }
+
+    #why-us .feature-content {
+        padding-left: 90px;
+    }
+
+    #why-us .feature-icon {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 25px;
+    }
+
+    .about-section {
+        display: flex;
+        flex-direction: row; /* خليهم جنب بعض */
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap; /* عشان لو ضاقت الشاشة جدًا ينزلوا تحت بعض */
+    }
+
+    .about-text {
+        flex: 1;
+        min-width: 150px;
+    }
+}   
+@media (max-width: 992px){
+    .about-video {
+        position: relative;
+        display: block;
+        flex: 1;
+        min-width:50px;
+    }
+}
+
+
+/* تحسينات قسم الأخبار */
+@media (max-width: 768px) {
+    .news-articles {
+        grid-template-columns: 1fr;
+    }
+    
+    .news-section h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+}
+
+/* تحسينات قسم Testimonials */
+@media (max-width: 768px) {
+    .testimonials-section h1 {
+        font-size: 2rem;
+    }
+    
+    .testimonial-card {
+        padding: 20px;
+    }
+    
+    .testimonial-card h2 {
+        font-size: 1.2rem;
+    }
+}
+
+/* تحسينات الفوتر */
+@media (max-width: 768px) {
+    .footer .col-lg-4 {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .footer-links-soi {
+        justify-content: center;
+    }
+    
+    .widget-title h3 {
+        text-align: center;
+    }
+}
+
+/* تحسينات القائمة الرئيسية */
+@media (max-width: 950px) {
+    .main-header {
+        padding: 10px 0;
+    }
+    
+    .logo {
+        line-height: 1.2;
+        padding-top: 10px;
+    }
+    
+    .main-menu li a {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+}
+
+/* تحسينات نموذج الدخول */
+@media (max-width: 768px) {
+    .login-box {
+        padding: 20px 20px;
+    }
+    
+    .login-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .login-logo {
+        margin-bottom: 15px;
+    }
+    
+    .login-content {
+        flex-direction: column;
+    }
+    
+    .login-image-container {
+        margin-bottom: 20px;
+    }
+    
+    .login-form {
+        text-align: center;
+    }
+}
