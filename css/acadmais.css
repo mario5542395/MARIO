@@ -595,14 +595,7 @@
         margin-bottom: 1.5rem;
         position: relative;
     }
-    .images-grid img {
-        width: 130%;
-        padding: 10px;
-        height: 250px;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    
     .content-paragraph {
         font-size: 1rem;
         line-height: 1.8;
@@ -617,14 +610,26 @@
         margin-bottom: 1.5rem;
         position: relative;
     }
-    .media-grid img {
-        width: 150%;
-        height: 200px;
-        margin: 10px;
-        padding: 10px;
-        border-radius: 12px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    .images-grid,
+    .media-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 10px;
     }
+    
+  .images-grid img,
+  .media-grid img {
+    width: 100%;
+    max-width: 320px; /* ⬅ مناسب لموبايل */
+    height: auto;
+    padding: 0;
+    margin: 0;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
     .carousel-fullscreen {
         height: 65vh;
         margin-bottom: 0 !important;
@@ -646,7 +651,7 @@
 }
 
     .footer {
-        height: 1200px;
+        height: auto;
         padding: 20px 0 30px;
         background: #ffffff;
         color: #000000;
@@ -658,7 +663,7 @@
       }
       .special-section {
         background-image: #ffffff9e;
-        height: 70vh;
+        height: 80vh;
         width: 100vw;
         padding: 0;
         margin: 0;
@@ -669,7 +674,7 @@
     }
     .content-section {
         background-color: rgba(22, 34, 57, 0.95);
-        height: 70vh;
+        height: 80vh;
         width: 100vw;
         padding: 0;
         margin: 0;
