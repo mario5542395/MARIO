@@ -1133,25 +1133,43 @@ news-section {
 }
 
 @media (max-width: 768px) {
-    .team-item {
-        margin-bottom: 100px;
-    }
-    
-    .team-item .team-text {
-        width: 180px;
-        height: 180px;
-        bottom: -40px;
-        position: sticky;
-    }
-    
     .team-item img.img-fluid {
-        width: 180px !important;
-        height: 180px !important;
+        border-radius: 50%;
+        width: 150px;
+        height: 400px;
+        object-fit: cover;
+        margin: 0 30px;
+        display: block;
     }
     
-    .teacherSlider .carousel-inner {
-        padding: 0 15px;
+    .team-item {
+        text-align: center;
+        margin-bottom: 30px;
+        transition: transform 0.3s ease;
     }
+    
+    .team-item:hover {
+        transform: translateY(-5px);
+    }
+    .team-item .team-text {
+        width: 140px;
+        height: 140px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -50px;
+        font-size: medium;
+    }
+    .team-item .team-text .btn i {        /* لون وحجم الإطار */
+    border-radius: 50%;            /* يجعل الإطار دائري */
+    background-color: transparent; /* الخلفية شفافة */
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;    /* تأثير الانتقال */
+    }
+    
 }
 
 /* تحسينات قسم Why Us */

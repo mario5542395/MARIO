@@ -587,7 +587,15 @@
       font-size: 16px;
       color: #dddddd;
     }
-  
+    .section-container ,.content-wrapper{
+        max-width: 1200px;
+        margin: 0 auto;
+        display: block;
+        flex-direction: row-reverse; /* لعكس المواقع ليصبح النص على اليسار */
+        align-items: center;
+        gap: 3rem;
+    }
+    
     /* 🖼️ صور الأقسام */
     .images-grid,
     .media-grid {
@@ -597,11 +605,28 @@
       gap: 10px;
       padding: 0 10px;
     }
-  
-    .images-grid img,
-    .media-grid img {
+    .section-title::after{
+        content: '';
+        display:inline-block;
+        text-align: center;
+        width: 160px;
+        height: 4px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        margin-top: 1rem;
+    }
+    .content-title::after{
+        content: '';
+        display: inline-block;
+        width: 150px;
+        height: 5px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        margin-top: 1rem;
+        margin-left: auto;
+    }
+    .images-grid img {
       width: 100%;
-      max-width: 320px;
+      max-width: 150px;
+      margin: 3dvb;
       height: auto;
       padding: 0;
       margin: 0;
@@ -609,14 +634,24 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       box-sizing: border-box;
     }
-  
+    .media-grid img{
+        width: 100%;
+      max-width: 120px;
+      margin: 3dvb;
+      height: auto;
+      padding: 0;
+      margin: 0;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+    }
     /* 📖 النصوص */
     .section-title,
     .content-title {
       font-size: 2rem;
       text-align: center;
       color: #d7d7d7;
-      margin-bottom: 1rem;
+      margin:1rem;
     }
     .section-title{
         color: #000;

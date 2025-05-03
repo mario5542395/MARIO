@@ -929,4 +929,9 @@ img {
   .project-name {
       font-size: 1.5rem;
   }
+  .member_counter  {
+    text-align: center;
+    height: 550px;
+    margin-top: 20px;
+}
 }

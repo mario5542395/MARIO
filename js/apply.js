@@ -1,39 +1,33 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const navItems = document.querySelectorAll(".main-nav li");
-    
-    // تحقق من وجود العناصر أولاً
-    if (navItems.length === 0) {
-        console.error("No navigation items found!");
-        return;
-    }
 
-    // استرجاع العنصر النشط عند تحميل الصفحة
+    if (navItems.length === 0) return;
+
     const activeIndex = localStorage.getItem("activeNavIndex");
+
     if (activeIndex !== null && navItems[activeIndex]) {
-        // إزالة الفئة أولاً من جميع العناصر
         navItems.forEach(item => item.classList.remove("active"));
-        // إضافة الفئة للعنصر المحدد
         navItems[activeIndex].classList.add("active");
     }
 
-    // إضافة معالج الأحداث
     navItems.forEach((item, index) => {
-        item.addEventListener("click", function() {
-            // إزالة الفئة من جميع العناصر
-            navItems.forEach(el => el.classList.remove("active"));
-            
-            // إضافة الفئة للعنصر الحالي
-            this.classList.add("active");
-            
-            // حفظ الفهرس في localStorage
-            try {
-                localStorage.setItem("activeNavIndex", index);
-            } catch (e) {
-                console.error("Failed to save to localStorage:", e);
+        item.addEventListener("click", function (e) {
+            e.preventDefault(); // منع السلوك الافتراضي (منع إضافة إلى history)
+
+            const link = this.querySelector("a");
+            if (link) {
+                // استبدال الصفحة بدون إضافة إلى history
+                window.location.replace(link.href);
             }
+
+            navItems.forEach(el => el.classList.remove("active"));
+            this.classList.add("active");
+
+            localStorage.setItem("activeNavIndex", index);
         });
     });
 });
+
 document.addEventListener('DOMContentLoaded', function() {
     var teacherSlider = document.getElementById('teacherSlider');
     var carousel = new bootstrap.Carousel(teacherSlider, {

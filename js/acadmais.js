@@ -18,19 +18,34 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 document.addEventListener("DOMContentLoaded", function () {
     const navItems = document.querySelectorAll(".main-nav li");
+
+    if (navItems.length === 0) return;
+
     const activeIndex = localStorage.getItem("activeNavIndex");
-    if (activeIndex !== null) {
+
+    if (activeIndex !== null && navItems[activeIndex]) {
+        navItems.forEach(item => item.classList.remove("active"));
         navItems[activeIndex].classList.add("active");
     }
 
-    navItems.forEach((li, index) => {
-        li.addEventListener("click", function () {
-            navItems.forEach(item => item.classList.remove("active"));
-            li.classList.add("active");
+    navItems.forEach((item, index) => {
+        item.addEventListener("click", function (e) {
+            e.preventDefault(); // منع السلوك الافتراضي (منع إضافة إلى history)
+
+            const link = this.querySelector("a");
+            if (link) {
+                // استبدال الصفحة بدون إضافة إلى history
+                window.location.replace(link.href);
+            }
+
+            navItems.forEach(el => el.classList.remove("active"));
+            this.classList.add("active");
+
             localStorage.setItem("activeNavIndex", index);
         });
     });
 });
+
 document.getElementById('login-link').addEventListener('click', function(e) {
     e.preventDefault();
     document.getElementById('loginModal').style.display = 'flex';
